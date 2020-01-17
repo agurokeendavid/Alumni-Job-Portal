@@ -9,11 +9,11 @@ if (isset($_POST['submit-job'])) {
     $Description = nl2br($_POST['Description']);
     $Location = $_POST['Location'];
     $fieldwork = $_POST['fieldwork'];
-    $course = $_POST['course'];
+    // $course = $_POST['course'];
     $status = $_POST['status'];
     try
     {
-        $query = mysqli_query($con,"INSERT INTO `suggested_job` (job_Title, job_company, job_email, job_contact_number, job_description, job_location, job_field_work, job_Course, job_status) VALUES ('$Title', '$Company', '$email', '$contact','$Description', '$Location', '$fieldwork', '$course', '$status')");
+        $query = mysqli_query($con,"INSERT INTO `suggested_job` (job_Title, job_company, job_email, job_contact_number, job_description, job_location, job_field_work, job_status) VALUES ('$Title', '$Company', '$email', '$contact','$Description', '$Location', '$fieldwork', '$status')");
         if ($query)
         {
             echo "<script>alert('Successfully Added!');
@@ -40,9 +40,9 @@ if (isset($_POST['edit-job'])) {
     $Description = nl2br($_POST['Description']);
     $Location = $_POST['Location'];
     $fieldwork = $_POST['fieldwork'];
-    $course = $_POST['course'];
+    // $course = $_POST['course'];
     $status = $_POST['status'];
-    $query = mysqli_query($con,"UPDATE `suggested_job` SET `job_Title` = '$Title', job_company = '$Company', `job_email` = '$email', `job_contact_number` = '$contact', job_description = '$Description', job_location = '$Location', `job_field_work` = '$fieldwork', `job_Course` = '$course', `job_status` = '$status' WHERE `suggested_job`.`job_ID` = '$id'");
+    $query = mysqli_query($con,"UPDATE `suggested_job` SET `job_Title` = '$Title', job_company = '$Company', `job_email` = '$email', `job_contact_number` = '$contact', job_description = '$Description', job_location = '$Location', `job_field_work` = '$fieldwork', `job_status` = '$status' WHERE `suggested_job`.`job_ID` = '$id'");
     if ($query)
     {
         echo "<script>alert('Successfully Edit!');

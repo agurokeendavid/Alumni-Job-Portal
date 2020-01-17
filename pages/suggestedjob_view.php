@@ -10,12 +10,12 @@ $d = mysqli_fetch_array($sql);
       <div class="row">
         <div class="col-xs-12">
           <h2 class="page-header">
-            <?php echo $d[2]; ?>
-            <small class="pull-right"><?php echo date("F d, Y", strtotime($d[8])); ?></small>
-            <small><?php echo $d[7]; ?></small>
-            <small>Position: <?php echo $d[1]; ?></small>
-            
-            <hr>
+            <?php echo $d['job_company']; ?>
+            <small class="pull-right"><?php echo date("F d, Y", strtotime($d['job_posted_date'])); ?></small>
+            <small><?php echo $d['job_location'] . ', ' . $d['job_field_work']; ?></small>
+            <small><?php echo $d['job_contact_number']; ?></small>
+            <small><?php echo $d['job_email']; ?></small>
+            <small>Position: <?php echo $d['job_Title']; ?></small>
           </h2>
         </div>
         <!-- /.col -->
@@ -27,10 +27,4 @@ $d = mysqli_fetch_array($sql);
         </div>
         <!-- /.col -->
       </div>
-      <hr>
-      <span>
-      <small><?php echo $d[3]; ?></small>
-      <br>
-            <small><?php echo $d[4]; ?></small>
-            </span>
 <?php } ?>

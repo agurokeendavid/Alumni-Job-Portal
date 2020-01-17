@@ -71,6 +71,8 @@ include('inc/sidebar-student.php');
                   <tr>
                     <th>Job Title</th>
                     <th>Company</th>
+                    <th>Field</th>
+                    <th>Posted Date</th>
                     <th class="text-center">Action</th>
                   </tr>
                 </thead>
@@ -78,6 +80,8 @@ include('inc/sidebar-student.php');
                   <tr>
                   <th>Job Title</th>
                     <th>Company</th>
+                    <th>Field</th>
+                    <th>Posted Date</th>
                     <th class="text-center">Action</th>
                   </tr>
                 </tfoot>
@@ -85,14 +89,15 @@ include('inc/sidebar-student.php');
 
                   <?php 
 
-$sql = mysqli_query($con,"SELECT sj.job_ID, usd.student_course, sj.job_Title, sj.job_company, sj.job_description, sj.job_location, sj.job_posted_date FROM `suggested_job` sj,user_student_detail usd
-WHERE usd.student_userID = '$login_id' AND sj.job_Course = usd.student_course
-ORDER by sj.job_posted_date DESC LIMIT 4");
+$sql = mysqli_query($con,"SELECT sj.job_ID, usd.student_course, sj.job_Title, sj.job_company, sj.job_description, sj.job_location, sj.job_posted_date, sj.job_field_work FROM `suggested_job` sj,user_student_detail usd
+WHERE (usd.student_userID = '$login_id') AND (sj.job_status = 'Active') ORDER by sj.job_posted_date DESC LIMIT 4");
 while ($d = mysqli_fetch_array($sql)) {
     ?>
                   <tr>
                     <td><?php  echo $d[2];?></td>
                     <td><?php  echo $d[3];?></td>
+                    <td><?php  echo $d[7];?></td>
+                    <td><?php echo date("F d, Y", strtotime($d[6])); ?></td>
                     <td class="text-center">
                       <div class="btn-group ">
                       <button data-id="<?php echo $d[0];?>" class="btn btn-primary" class="btn btn-info btn-lg"

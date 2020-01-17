@@ -138,7 +138,7 @@ if ($login_level == '1')
                 <label for="text1" class="control-label col-lg-4">Contact</label>
 
                 <div class="col-lg-8">
-                  <input type="text" id="text1" placeholder="Contact" class="form-control" name="student_contact"
+                  <input type="number" id="text1" placeholder="Contact" class="form-control" name="student_contact"
                     onkeyup="numberInputOnly(this);" required="" value="<?php echo $student_contact;?>">
                 </div>
               </div>
