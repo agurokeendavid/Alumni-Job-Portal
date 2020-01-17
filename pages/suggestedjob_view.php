@@ -11,9 +11,11 @@ $d = mysqli_fetch_array($sql);
         <div class="col-xs-12">
           <h2 class="page-header">
             <?php echo $d[2]; ?>
-            <small class="pull-right"><?php echo date("F d, Y", strtotime($d[5])); ?></small>
-            <br>
-            <small><?php echo $d[4]; ?></small>
+            <small class="pull-right"><?php echo date("F d, Y", strtotime($d[8])); ?></small>
+            <small><?php echo $d[7]; ?></small>
+            <small>Position: <?php echo $d[1]; ?></small>
+            
+            <hr>
           </h2>
         </div>
         <!-- /.col -->
@@ -21,9 +23,14 @@ $d = mysqli_fetch_array($sql);
       <!-- info row -->
       <div class="row invoice-info">
         <div class="col-sm-12">
-        <?php echo $d[3]; ?>
+        <?php echo $d[5]; ?>
         </div>
         <!-- /.col -->
       </div>
-
+      <hr>
+      <span>
+      <small><?php echo $d[3]; ?></small>
+      <br>
+            <small><?php echo $d[4]; ?></small>
+            </span>
 <?php } ?>

@@ -39,7 +39,7 @@ cc.course_acronym course,
 usd.student_admission,
 usd.student_year_grad,usd.student_ID";
 $sql.=" FROM `user_student_detail` usd
-LEFT JOIN capsu_course cc ON cc.course_ID = usd.student_department WHERE 1=1";
+INNER JOIN capsu_course cc ON usd.student_course = cc.course_ID WHERE 1=1";
 if( !empty($requestData['search']['value']) ) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
 	$sql.=" AND ( usd.student_IDNumber LIKE '%".$requestData['search']['value']."%' ";    
 	$sql.=" OR CONCAT(`usd`.student_lName,', ',`usd`.student_fName,', ',
@@ -67,6 +67,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 	$nestedData[] = "<center><div class='btn-group'>                                   
 	<a  class='btn btn-metis-5' href='recordstudent_edit.php?studentID=$student_ID'><i class='fa fa-edit'></i></a>
 	<a  class='btn btn-metis-1' href='recordstudent_delete.php?studentID=$student_ID' ><i class='fa fa-close'></i></a>
+	
                                         </div></center>";
 	
 	$data[] = $nestedData;

@@ -249,21 +249,12 @@ while($rowCount = mysqli_fetch_array($jobCount)){
             <div class="box-body">
               <ul class="products-list product-list-in-box">
               <?php 
-              if ($login_level == 3)
-              {
-                $jobs = mysqli_query($con,"SELECT sj.job_Title, sj.job_company, sj.job_description, sj.job_location, sj.job_posted_date FROM `suggested_job` sj ORDER by sj.job_posted_date DESC LIMIT 4"); 
-              }
-              else
-              {
-              $jobs = mysqli_query($con,"SELECT sj.job_Title, sj.job_company, sj.job_description, sj.job_location, sj.job_posted_date FROM `suggested_job` sj,user_student_detail usd
-WHERE usd.student_userID = '$login_id' AND job_Course = usd.student_course
-ORDER by sj.job_posted_date DESC LIMIT 4"); 
-} 
+                $jobs = mysqli_query($con,"SELECT sj.job_ID, sj.job_Title, sj.job_company, sj.job_description, sj.job_location, sj.job_posted_date FROM `suggested_job` sj WHERE sj.job_status = 'Active' ORDER by sj.job_posted_date DESC LIMIT 4"); 
  while ($job = mysqli_fetch_array($jobs)) {
 ?>
                 <li class="item">
                   <div class="product-info">
-                    <a href="javascript:void(0)" class="product-title"><?php echo $job['job_Title']; ?>
+                    <a href="javascript:void(0)" class="product-title" data-toggle="modal" data-target="#view" data-id="<?php echo $job['job_ID'];?>" id="viewjob"><?php echo $job['job_Title']; ?>
                         <span class="product-description">
                         <?php echo $job['job_company']; ?>
                         </span>
@@ -294,3 +285,62 @@ ORDER by sj.job_posted_date DESC LIMIT 4");
 <!-- /.content-wrapper -->
 
 <?php include('inc/footer.php'); ?>
+<!-- Modal -->
+<div id="view" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">View Job Description</h4>
+      </div>
+      <div class="modal-body">
+      <div id="viewmodal-loader" style="display: none; text-align: center;">
+          <img src="../assets/img/ajax-loader.gif">
+        </div>
+
+        <!-- content will be load here -->
+        <div id="view-content"></div>
+      <!-- title row -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+
+  $(document).on('click', '#viewjob', function(e) {
+
+e.preventDefault();
+
+var uid = $(this).data('id'); // it will get id of clicked row
+
+$('#view-content').html(''); // leave it blank before ajax call
+$('#viewmodal-loader').show(); // load ajax loader
+
+$.ajax({
+    url: 'suggestedjob_view.php',
+    type: 'POST',
+    data: 'id=' + uid,
+    dataType: 'html'
+  })
+  .done(function(data) {
+    console.log(data);
+    $('#view-content').html('');
+    $('#view-content').html(data); // load response 
+    $('#viewmodal-loader').hide(); // hide ajax loader 
+  })
+  .fail(function() {
+    $('#view-content').html(
+      '<i class="glyphicon glyphicon-info-sign"></i> Something went wrong, Please try again...');
+    $('#viewmodal-loader').hide();
+  });
+
+});
+});
+</script>

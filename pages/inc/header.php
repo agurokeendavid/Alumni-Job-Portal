@@ -127,7 +127,7 @@ $userType = "admin";
                   </p>
                 </li>
                 <!-- Menu Footer-->
-                <li class="user-footer">
+                <li class="user-footer" style="background-color: rgba(0, 0, 0, 0.7)">
                   <div class="pull-left">
                     <a href="profile.php" class="btn btn-default btn-flat">Profile</a>
                   </div>

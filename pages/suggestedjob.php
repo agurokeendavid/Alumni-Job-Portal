@@ -73,27 +73,37 @@ include('inc/sidebar-admin.php');
                   <tr>
                     <th>Job Title</th>
                     <th>Course</th>
+                    <th>Field</th>
+                    <th>Date Posted</th>
+                    <th>Status</th>
                     <th class="text-center">Action</th>
                   </tr>
                 </thead>
                 <tfoot>
                   <tr>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                    <th>Job Title</th>
+                    <th>Course</th>
+                    <th>Field</th>
+                    <th>Date Posted</th>
+                    <th>Status</th>
+                    <th class="text-center">Action</th>
                   </tr>
                 </tfoot>
                 <tbody>
 
                   <?php 
 
-$sql = mysqli_query($con,"SELECT sj.job_ID,sj.job_Title,cc.course_name FROM `suggested_job` sj
+$sql = mysqli_query($con,"SELECT sj.job_ID,sj.job_Title,cc.course_name,sj.job_field_work, sj.job_status, sj.job_posted_date FROM `suggested_job` sj
 INNER JOIN  capsu_course cc ON sj.job_Course = cc.course_ID ORDER BY `job_ID` ASC");
 while ($d = mysqli_fetch_array($sql)) {
     ?>
                   <tr>
                     <td><?php  echo $d[1];?></td>
                     <td><?php  echo $d[2];?></td>
+                    <td><?php  echo $d[3];?></td>
+                    <td><?php echo date("F d, Y", strtotime($d[5])); ?></td>
+                    <td><?php  echo $d[4];?></td>
+                    
                     <td class="text-center">
                       <div class="btn-group ">
                       <button data-id="<?php echo $d[0];?>" class="btn btn-primary" class="btn btn-info btn-lg"
@@ -165,7 +175,7 @@ $(document).ready(function() {
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Add New Job Recommended</h4>
+          <h4 class="modal-title">Add New Job</h4>
         </div>
         <div class="modal-body">
           <form class="form-horizontal" action="../action/submitjob.php" method="post">
@@ -173,42 +183,54 @@ $(document).ready(function() {
             <div class="form-group">
               <label class="control-label col-sm-2" for="Title">Title:</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" id="Title" placeholder="Title" name="Title">
+                <input type="text" class="form-control" id="Title" placeholder="Title" name="Title" required>
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2" for="Company">Company:</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" id="Company" placeholder="Company Name" name="Company">
+                <input type="text" class="form-control" id="Company" placeholder="Company Name" name="Company" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="emailaddress">Email:</label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control" id="emailaddress" placeholder="mail@mail.com" name="emailaddress">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="contactnumber">Contact:</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" id="contactnumber" placeholder="Contact Number" name="contactnumber">
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2" for="Description">Description:</label>
               <div class="col-sm-10">
-              <textarea class="form-control" rows="3" placeholder="Description" id="Description" name="Description"></textarea>
+              <textarea class="form-control" rows="3" placeholder="Description" id="Description" name="Description" required></textarea>
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2" for="Location">Location:</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" id="Location" placeholder="Location" name="Location">
+                <input type="text" class="form-control" id="Location" placeholder="Location" name="Location" required>
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" for="course">Course:</label>
+              <label class="control-label col-sm-2" for="fieldwork">Field:</label>
               <div class="col-sm-10">
-
-                <?php 
-  $sql = mysqli_query($con,"SELECT * FROM `capsu_course`");
-        
-        ?>
-                <select class="form-control" name="course">
-                  <?php 
-            while ($o = mysqli_fetch_array($sql)){
-              ?>
-
-                  <option value="<?php echo $o[0]?>"><?php echo $o[2] ?></option>
-                  <?php } ?>
+                <select class="form-control" name="fieldwork">
+                  <option value="Local">Local</option>
+                  <option value="International">International</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="status">Status:</label>
+              <div class="col-sm-10">
+                <select class="form-control" name="status">
+                  <option value="Active">Active</option>
+                  <option value="Inactive">Inactive</option>
                 </select>
               </div>
             </div>

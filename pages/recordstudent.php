@@ -143,7 +143,7 @@ if ($login_level == '1')
                 </div>
               </div>
               <div class="form-group">
-                <label for="text1" class="control-label col-lg-4">Middle Name</label>
+                <label for="text1" class="control-label col-lg-4">Middle Initial</label>
 
                 <div class="col-lg-8">
                   <input type="text" id="text1" placeholder="Middle Name" class="form-control" name="student_middlename"
@@ -294,3 +294,29 @@ if ($login_level == '1')
 </div>
 
 <?php include('inc/footer.php'); ?>
+<!-- Modal -->
+<div id="delete" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Delete</h4>
+      </div>
+      <div class="modal-body">
+        <div id="deletemodal-loader" style="display: none; text-align: center;">
+          <img src="../assets/img/ajax-loader.gif">
+        </div>
+
+        <!-- content will be load here -->
+        <div id="delete-content"></div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

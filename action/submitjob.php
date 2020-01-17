@@ -4,13 +4,30 @@ $con = mysqli_connect('localhost','root','','alumniportaldb') or die("ERROR");
 if (isset($_POST['submit-job'])) {
     $Title = $_POST['Title'];
     $Company = $_POST['Company'];
-    $Description = $_POST['Description'];
+    $email = $_POST['emailaddress'];
+    $contact = $_POST['contactnumber'];
+    $Description = nl2br($_POST['Description']);
     $Location = $_POST['Location'];
+    $fieldwork = $_POST['fieldwork'];
     $course = $_POST['course'];
-    mysqli_query($con,"INSERT INTO `suggested_job` (job_Title, job_company, job_description, job_location, job_Course) VALUES ('$Title', '$Company', '$Description', '$Location', '$course')");
-    echo "<script>alert('Successfully Added!');
-                                                window.location='../pages/suggestedjob.php';
-                                            </script>";
+    $status = $_POST['status'];
+    try
+    {
+        $query = mysqli_query($con,"INSERT INTO `suggested_job` (job_Title, job_company, job_email, job_contact_number, job_description, job_location, job_field_work, job_Course, job_status) VALUES ('$Title', '$Company', '$email', '$contact','$Description', '$Location', '$fieldwork', '$course', '$status')");
+        if ($query)
+        {
+            echo "<script>alert('Successfully Added!');
+            window.location='../pages/suggestedjob.php';
+        </script>"; 
+        }
+        
+        
+    }
+    catch (Exception $e)
+    {
+        echo "<script>alert('" + $ex + "')</script>";
+    }
+    
 }
 
 if (isset($_POST['edit-job'])) {
@@ -18,13 +35,27 @@ if (isset($_POST['edit-job'])) {
     $id = $_REQUEST['id']; 
     $Title = $_POST['Title'];
     $Company = $_POST['Company'];
-    $Description = $_POST['Description'];
+    $email = $_POST['emailaddress'];
+    $contact = $_POST['contactnumber'];
+    $Description = nl2br($_POST['Description']);
     $Location = $_POST['Location'];
+    $fieldwork = $_POST['fieldwork'];
     $course = $_POST['course'];
-    mysqli_query($con,"UPDATE `suggested_job` SET `job_Title` = '$Title', job_company = '$Company', job_description = '$Description', job_location = '$Location', `job_Course` = '$course' WHERE `suggested_job`.`job_ID` = '$id'");
-    echo "<script>alert('Successfully Edit!');
-                                                window.location='../pages/suggestedjob.php';
-                                            </script>";
+    $status = $_POST['status'];
+    $query = mysqli_query($con,"UPDATE `suggested_job` SET `job_Title` = '$Title', job_company = '$Company', `job_email` = '$email', `job_contact_number` = '$contact', job_description = '$Description', job_location = '$Location', `job_field_work` = '$fieldwork', `job_Course` = '$course', `job_status` = '$status' WHERE `suggested_job`.`job_ID` = '$id'");
+    if ($query)
+    {
+        echo "<script>alert('Successfully Edit!');
+        window.location='../pages/suggestedjob.php';
+    </script>";
+    }
+    else
+    {
+        echo "<script>alert('Updating data failed!');
+        window.location='../pages/suggestedjob.php';
+    </script>";
+    }
+    
 }
 if (isset($_POST['delete-job'])) {
     $id = $_REQUEST['id']; 
