@@ -33,7 +33,7 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 
 $sql = "SELECT usd.student_IDNumber,
-CONCAT(usd.student_lName,', ',usd.student_fName,', ',
+CONCAT(usd.student_lName,', ',usd.student_fName,' ',
 usd.student_mName,'.') fullname,
 cc.course_acronym course,
 usd.student_admission,
@@ -42,7 +42,7 @@ $sql.=" FROM `user_student_detail` usd
 INNER JOIN capsu_course cc ON usd.student_course = cc.course_ID WHERE 1=1";
 if( !empty($requestData['search']['value']) ) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
 	$sql.=" AND ( usd.student_IDNumber LIKE '%".$requestData['search']['value']."%' ";    
-	$sql.=" OR CONCAT(`usd`.student_lName,', ',`usd`.student_fName,', ',
+	$sql.=" OR CONCAT(`usd`.student_lName,', ',`usd`.student_fName,' ',
 `usd`.student_mName,'.') LIKE '%".$requestData['search']['value']."%' ";
 	$sql.=" OR  cc.course_acronym LIKE '%".$requestData['search']['value']."%' ";
 	$sql.=" OR usd.student_admission LIKE '%".$requestData['search']['value']."%' ";

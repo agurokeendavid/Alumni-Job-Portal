@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 11, 2020 at 08:03 AM
+-- Generation Time: Jan 18, 2020 at 08:01 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -223,11 +223,22 @@ CREATE TABLE `suggested_job` (
   `job_ID` int(11) UNSIGNED NOT NULL,
   `job_Title` varchar(250) DEFAULT NULL,
   `job_company` varchar(50) NOT NULL,
-  `job_description` text DEFAULT NULL,
+  `job_email` varchar(50) DEFAULT NULL,
+  `job_contact_number` varchar(50) DEFAULT NULL,
+  `job_description` varchar(300) DEFAULT NULL,
   `job_location` varchar(50) DEFAULT NULL,
+  `job_field_work` varchar(20) NOT NULL,
   `job_posted_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `job_Course` int(11) UNSIGNED DEFAULT NULL
+  `job_Course` int(11) UNSIGNED DEFAULT NULL,
+  `job_status` varchar(10) NOT NULL DEFAULT 'Inactive'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `suggested_job`
+--
+
+INSERT INTO `suggested_job` (`job_ID`, `job_Title`, `job_company`, `job_email`, `job_contact_number`, `job_description`, `job_location`, `job_field_work`, `job_posted_date`, `job_Course`, `job_status`) VALUES
+(45, 'Engineer', 'Tech Solution', 'mail@mail.com', '09206264079', 'Test<br />\r\nDescription', 'Manila', 'Local', '2020-01-17 14:46:30', NULL, 'Active');
 
 -- --------------------------------------------------------
 
@@ -946,7 +957,7 @@ ALTER TABLE `message_thread_participant`
 -- AUTO_INCREMENT for table `suggested_job`
 --
 ALTER TABLE `suggested_job`
-  MODIFY `job_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `job_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `survey`
@@ -982,7 +993,7 @@ ALTER TABLE `survey_forms`
 -- AUTO_INCREMENT for table `survey_maxcount`
 --
 ALTER TABLE `survey_maxcount`
-  MODIFY `survey_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `survey_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `survey_question1`
@@ -1042,7 +1053,7 @@ ALTER TABLE `survey_questionnaire`
 -- AUTO_INCREMENT for table `user_account`
 --
 ALTER TABLE `user_account`
-  MODIFY `user_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `user_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `user_admin_detail`
@@ -1078,7 +1089,7 @@ ALTER TABLE `user_notif_type`
 -- AUTO_INCREMENT for table `user_student_detail`
 --
 ALTER TABLE `user_student_detail`
-  MODIFY `student_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `student_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `user_teacher_detail`

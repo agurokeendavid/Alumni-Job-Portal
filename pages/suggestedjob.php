@@ -72,7 +72,6 @@ include('inc/sidebar-admin.php');
                 <thead>
                   <tr>
                     <th>Job Title</th>
-                    <th>Course</th>
                     <th>Field</th>
                     <th>Date Posted</th>
                     <th>Status</th>
@@ -82,7 +81,6 @@ include('inc/sidebar-admin.php');
                 <tfoot>
                   <tr>
                     <th>Job Title</th>
-                    <th>Course</th>
                     <th>Field</th>
                     <th>Date Posted</th>
                     <th>Status</th>
@@ -93,16 +91,14 @@ include('inc/sidebar-admin.php');
 
                   <?php 
 
-$sql = mysqli_query($con,"SELECT sj.job_ID,sj.job_Title,cc.course_name,sj.job_field_work, sj.job_status, sj.job_posted_date FROM `suggested_job` sj
-INNER JOIN  capsu_course cc ON sj.job_Course = cc.course_ID ORDER BY `job_ID` ASC");
+$sql = mysqli_query($con,"SELECT sj.job_ID,sj.job_Title,sj.job_field_work, sj.job_status, sj.job_posted_date FROM `suggested_job` sj ORDER BY `job_ID` ASC");
 while ($d = mysqli_fetch_array($sql)) {
     ?>
                   <tr>
                     <td><?php  echo $d[1];?></td>
                     <td><?php  echo $d[2];?></td>
+                    <td><?php echo date("F d, Y", strtotime($d[4])); ?></td>
                     <td><?php  echo $d[3];?></td>
-                    <td><?php echo date("F d, Y", strtotime($d[5])); ?></td>
-                    <td><?php  echo $d[4];?></td>
                     
                     <td class="text-center">
                       <div class="btn-group ">

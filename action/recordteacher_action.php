@@ -113,7 +113,7 @@
 							
 							if ($chk = mysqli_query($con,$chk)){
 
-										echo "<script>alert('Successfully Update!');
+										echo "<script>alert('Successfully Added!');
 																				window.location='../pages/recordteacher.php';
 																			</script>";
 								

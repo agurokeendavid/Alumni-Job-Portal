@@ -87,12 +87,12 @@ if ($login_level == '1')
               </thead>
               <tfoot>
                 <tr>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
+                <th class="text-center col-sm-1">Student #</th>
+                  <th class="text-center col-sm-3">Name</th>
+                  <th class="text-center col-sm-1">Course</th>
+                  <th class="text-center col-sm-2">Year Admitted</th>
+                  <th class="text-center">Year graduated</th>
+                  <th class="text-center ">Action</th>
                 </tr>
               </tfoot>
             </table>
@@ -170,7 +170,7 @@ if ($login_level == '1')
 
                 <div class="col-lg-8">
                   <input type="number" id="text1" placeholder="Contact" class="form-control" name="student_contact"
-                    onkeyup="numberInputOnly(this);" required="" min="9" max="9">
+                    onkeyup="numberInputOnly(this);" required="">
                 </div>
               </div>
               <div class="form-group">
