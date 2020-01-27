@@ -104,25 +104,31 @@
 				              '$student_course',
 				               'unregister',
 				                NULL,
-				                 NULL);";
-				$res = mysqli_query($con,$sql);
-				$last_id = mysqli_insert_id($con);
-				$chk = "UPDATE `user_student_detail` 
-						SET `student_IDNumber` = '$student_sinumber' WHERE `user_student_detail`.`student_ID` = $last_id";
-				
-				if($res)
-				{
-					echo "<script>alert('Successfully Added!');
-					window.location='../pages/recordstudent.php';
-				</script>";
-				}
-				else
-				{
-					echo "<script>alert('". $res->error . "');
-																	window.location='../pages/recordstudent.php';
-																</script>";
-				}
-				
+								 NULL);";
+								 if ($res = mysqli_query($con,$sql)) {
+									$last_id = mysqli_insert_id($con);
+									$chk = "UPDATE `user_student_detail` 
+											SET `student_IDNumber` = '$student_sinumber' WHERE `user_student_detail`.`student_ID` = $last_id";
+									
+									if($res)
+									{
+										echo "<script>alert('Successfully Added!');
+										window.location='../pages/recordstudent.php';
+									</script>";
+									}
+									else
+									{
+										echo "<script>alert('Please try again!');
+																						window.location='../pages/recordstudent.php';
+																					</script>";
+									}
+								 }
+								 else
+								 {
+									echo "<script>alert('Please try again!');
+									window.location='../pages/recordstudent.php';
+								</script>";
+								 }
 		}
 }
 ?>

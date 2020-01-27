@@ -6,7 +6,7 @@ $sql = mysqli_query($con,"SELECT * FROM suggested_job where job_ID = $id");
 $d = mysqli_fetch_array($sql);
 ?>
 
-<!-- title row -->
+
       <div class="row">
         <div class="col-xs-12">
           <h2 class="page-header">
@@ -23,8 +23,10 @@ $d = mysqli_fetch_array($sql);
       <!-- info row -->
       <div class="row invoice-info">
         <div class="col-sm-12">
-        <?php echo $d[5]; ?>
+        <?php echo $d['job_description']; ?>
         </div>
         <!-- /.col -->
       </div>
+      <hr>
+      <a href="<?php echo $d['website']; ?>"><?php echo $d['website']; ?></a>
 <?php } ?>

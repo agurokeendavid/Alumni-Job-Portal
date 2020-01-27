@@ -46,6 +46,8 @@ $.widget.bridge('uibutton', $.ui.button);
 <script src="../assets/admin/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 <!-- jQuery Knob Chart -->
 <script src="../assets/admin/plugins/knob/jquery.knob.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="../assets/admin/plugins/ckeditor/ckeditor.js"></script>
 <!-- daterangepicker -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 <script src="../assets/admin/plugins/daterangepicker/daterangepicker.js"></script>

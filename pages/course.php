@@ -1,9 +1,6 @@
 <?php 
 include('../session.php');
 include('../db.php');
-
-$survey_maxcount_qry = mysqli_query($con,"SELECT survey_maxattemp FROM `survey_maxcount` WHERE survey_ownerID = '$login_id'");
-$survey_maxattemp = mysqli_fetch_array($survey_maxcount_qry);
 $page = 'Course';
 $_SESSION['page'] = '';
 if ($login_level == '1')
@@ -107,9 +104,11 @@ while ($d = mysqli_fetch_array($sql)) {
                     <td><?php  echo $d[2];?></td>
                     <td class="text-center">
                       <div class="btn-group ">
+                      <button data-id="<?php echo $d[0];?>" class="btn btn-success" class="btn btn-info btn-lg"
+                          data-toggle="modal" data-target="#view" id="viewjob">VIEW</button>
                         <button data-id="<?php echo $d[0];?>" class="btn btn-primary" class="btn btn-info btn-lg"
                           data-toggle="modal" data-target="#edit" id="editjob">EDIT</button>
-                        <button data-id="<?php echo $d[0];?>" class="btn btn-primary" class="btn btn-info btn-lg"
+                        <button data-id="<?php echo $d[0];?>" class="btn btn-danger" class="btn btn-info btn-lg"
                           data-toggle="modal" data-target="#delete" id="deletejob">DELETE</button>
                       </div>
                     </td>
@@ -135,11 +134,32 @@ while ($d = mysqli_fetch_array($sql)) {
 
 <?php include('inc/footer.php'); ?>
 
-<script type="text/javascript">
-$(document).ready(function() {
-  var dataTable = $('#11').DataTable({});
-});
-</script>
+<!-- View Modal -->
+<div id="view" class="modal fade" role="dialog">
+<div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">List of Students</h4>
+      </div>
+      <div class="modal-body">
+        <div id="viewmodal-loader" style="display: none; text-align: center;">
+          <img src="../assets/img/ajax-loader.gif">
+        </div>
+
+        <!-- content will be load here -->
+        <div id="view-content"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 
 <!-- Modal -->
 <div id="add" class="modal fade" role="dialog">
@@ -257,6 +277,35 @@ $(document).ready(function() {
 <script type="text/javascript">
 $(document).ready(function() {
 
+  $(document).on('click', '#viewjob', function(e) {
+
+e.preventDefault();
+
+var uid = $(this).data('id'); // it will get id of clicked row
+
+$('#view-content').html(''); // leave it blank before ajax call
+$('#view-loader').show(); // load ajax loader
+
+$.ajax({
+    url: 'course_view.php',
+    type: 'POST',
+    data: 'id=' + uid,
+    dataType: 'html'
+  })
+  .done(function(data) {
+    console.log(data);
+    $('#view-content').html('');
+    $('#view-content').html(data); // load response 
+    $('#viewmodal-loader').hide(); // hide ajax loader 
+  })
+  .fail(function() {
+    $('#view-content').html(
+      '<i class="glyphicon glyphicon-info-sign"></i> Something went wrong, Please try again...');
+    $('#viewmodal-loader').hide();
+  });
+
+});
+
   $(document).on('click', '#editjob', function(e) {
 
     e.preventDefault();
@@ -315,5 +364,10 @@ $(document).ready(function() {
       });
 
   });
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+  var dataTable = $('#11').DataTable({});
 });
 </script>

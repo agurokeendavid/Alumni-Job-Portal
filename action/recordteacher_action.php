@@ -70,8 +70,6 @@
 		 			VALUES ('2','$teacher_username','$password1')");
 		 		// geting the last insert created account
 				$last_id = mysqli_insert_id($con);
-
-				
 						$sql = "INSERT INTO `user_teacher_detail` (
 						`teacher_ID`,
 						 `teacher_userID`,
@@ -112,40 +110,28 @@
 									SET `teacher_facultyID` = '$teacher_finumber' WHERE `user_teacher_detail`.`teacher_ID` = $last_id";
 							
 							if ($chk = mysqli_query($con,$chk)){
-
 										echo "<script>alert('Successfully Added!');
 																				window.location='../pages/recordteacher.php';
 																			</script>";
-								
-								
 							}
 							else{
 								echo "<script>alert('Faculty Id Must be unique!');
 																				window.location='../pages/recordteacher.php';
 																			</script>";
 							}
-
 							echo "<script>alert('Successfully Added!');
 															window.location='../pages/recordteacher.php';
-														</script>";
-					
-
-					
-				}
-				
-				
-				
+														</script>";	
+				}	
 			}
-
-		
-		}
-		else
+			else
 		{
-
 		echo "<script>alert('Password not match!');
 												window.location='../pages/recordteacher.php';
 											</script>";
 		}
+		}
+		
 		
 	
 ?>

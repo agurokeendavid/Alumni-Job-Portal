@@ -1,8 +1,6 @@
 <?php 
 include('../session.php'); 
 include('../db.php');
-$survey_maxcount_qry = mysqli_query($con,"SELECT survey_maxattemp FROM `survey_maxcount` WHERE survey_ownerID = '$login_id'");
-$survey_maxattemp = mysqli_fetch_array($survey_maxcount_qry);
 $page = 'dashboard';
 $_SESSION['page'] = '';
 if ($login_level == '1')
@@ -63,24 +61,6 @@ $totalAcc_register_asTeacher = $json->DataCount($totalresult_ofTeacher);
 $totalAcc_register_asAdmin = $json->DataCount($totalresult_ofAdmin);
 $totalJob = $json->DataCount($totalresult_ofJob);
 
-
-$jobCount = mysqli_query($con,"SELECT DISTINCT(sq6.job) as label,(SELECT COUNT( job) from  survey_question6 WHERE job=sq6.job) as y from  survey_question6 sq6  WHERE sq6.job is not null");
-
- // $row_count = mysqli_num_rows($jobCount);
-
-
-
-while($jcc = mysqli_fetch_array($jobCount)){
-
-                    $datajcc[] = $jcc[0];
-       }  
-$jobCount = mysqli_query($con,"SELECT DISTINCT(sq6.job) as label,(SELECT COUNT( job) from  survey_question6 WHERE job=sq6.job) as y from  survey_question6 sq6  WHERE sq6.job is not null LIMIT 10");
- // $row_count = mysqli_num_rows($jobCount);
-
-while($rowCount = mysqli_fetch_array($jobCount)){
-
-                    $dataCount[] = $rowCount[1];
-       } 
 //  $jencode_title =  json_encode($datajcc);
   //  $jencode_jcount =  json_encode($dataCount);
 
@@ -232,9 +212,10 @@ while($rowCount = mysqli_fetch_array($jobCount)){
         </div>
         <!-- /.Left col -->
         <!-- right col (We are only adding the ID to make the widgets sortable)-->
-        <?php if ($login_level == 1 || $login_level == 3) { ?>
+        <?php if ($login_level == 3) { ?>
         <div class="col-lg-6">
 
+        <!-- JOBS LIST -->
         <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">Recently Added Jobs</h3>
@@ -265,50 +246,7 @@ while($rowCount = mysqli_fetch_array($jobCount)){
             </div>
             <!-- /.box-body -->
             <div class="box-footer text-center">
-            <?php if ($login_level == 1 ) { ?>
-              <a href="suggestedjob_available.php" class="uppercase">View All Jobs</a>
-            <?php } else { ?>
               <a href="suggestedjob.php" class="uppercase">View All Jobs</a>
-            <?php } ?>
-            </div>
-            <!-- /.box-footer -->
-          </div>
-        <!-- PRODUCT LIST -->
-        <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Recently Added Jobs</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <ul class="products-list product-list-in-box">
-              <?php 
-                $jobs = mysqli_query($con,"SELECT sj.job_ID, sj.job_Title, sj.job_company, sj.job_description, sj.job_location, sj.job_posted_date FROM `suggested_job` sj WHERE sj.job_status = 'Active' ORDER by sj.job_posted_date DESC LIMIT 4"); 
- while ($job = mysqli_fetch_array($jobs)) {
-?>
-                <li class="item">
-                  <div class="product-info">
-                    <a href="javascript:void(0)" class="product-title" data-toggle="modal" data-target="#view" data-id="<?php echo $job['job_ID'];?>" id="viewjob"><?php echo $job['job_Title']; ?>
-                        <span class="product-description">
-                        <?php echo $job['job_company']; ?>
-                        </span>
-                  </div>
-                </li>
- <?php } ?>
-              </ul>
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer text-center">
-            <?php if ($login_level == 1 ) { ?>
-              <a href="suggestedjob_available.php" class="uppercase">View All Jobs</a>
-            <?php } else { ?>
-              <a href="suggestedjob.php" class="uppercase">View All Jobs</a>
-            <?php } ?>
             </div>
             <!-- /.box-footer -->
           </div>
@@ -316,6 +254,67 @@ while($rowCount = mysqli_fetch_array($jobCount)){
           </div>
           <!-- right col -->
  <?php  } ?>
+
+         <!-- right col (We are only adding the ID to make the widgets sortable)-->
+         <?php if ($login_level == 1) { ?>
+        <div class="col-lg-6">
+        <!-- JOBS LIST -->
+        <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Notes</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+            <b>Note: </b><p style="font-size: 16px;">&nbsp; Rest assured that the data you inputted to this website will be considered confidential and will only be used by Capsu Pontevedra as for your record.</p>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+        <!-- JOBS LIST -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Recently Added Jobs</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <ul class="products-list product-list-in-box">
+              <?php 
+                $jobs = mysqli_query($con,"SELECT sj.job_ID, sj.job_Title, sj.job_company, sj.job_description, sj.job_location, sj.job_posted_date FROM `suggested_job` sj WHERE sj.job_status = 'Active' ORDER by sj.job_posted_date DESC LIMIT 4"); 
+ while ($job = mysqli_fetch_array($jobs)) {
+?>
+                <li class="item">
+                  <div class="product-info">
+                    <a href="javascript:void(0)" class="product-title" data-toggle="modal" data-target="#view" data-id="<?php echo $job['job_ID'];?>" id="viewjob"><?php echo $job['job_Title']; ?>
+                        <span class="product-description">
+                        <?php echo $job['job_company']; ?>
+                        </span>
+                  </div>
+                </li>
+ <?php } ?>
+              </ul>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer text-center">
+              <a href="suggestedjob_available.php" class="uppercase">View All Jobs</a>
+            </div>
+            <!-- /.box-footer -->
+          </div>
+          <!-- /.box -->
+          </div>
+          <!-- right col -->
+ <?php  } ?>
+ 
           </div>
           <!-- /.row (main row) -->
         </section>

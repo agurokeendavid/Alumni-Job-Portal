@@ -1,10 +1,6 @@
 <?php 
 include('../session.php');
 include('../db.php');
-
-
-$survey_maxcount_qry = mysqli_query($con,"SELECT survey_maxattemp FROM `survey_maxcount` WHERE survey_ownerID = '$login_id'");
-$survey_maxattemp = mysqli_fetch_array($survey_maxcount_qry);
 $page = 'Suggested Job';
 $_SESSION['page'] = '';
 if ($login_level == '1')
@@ -102,11 +98,11 @@ while ($d = mysqli_fetch_array($sql)) {
                     
                     <td class="text-center">
                       <div class="btn-group ">
-                      <button data-id="<?php echo $d[0];?>" class="btn btn-primary" class="btn btn-info btn-lg"
+                      <button data-id="<?php echo $d[0];?>" class="btn btn-success" class="btn btn-info btn-lg"
                           data-toggle="modal" data-target="#view" id="viewjob">VIEW</button>
                         <button data-id="<?php echo $d[0];?>" class="btn btn-primary" class="btn btn-info btn-lg"
                           data-toggle="modal" data-target="#edit" id="editjob">EDIT</button>
-                        <button data-id="<?php echo $d[0];?>" class="btn btn-primary" class="btn btn-info btn-lg"
+                        <button data-id="<?php echo $d[0];?>" class="btn btn-danger" class="btn btn-info btn-lg"
                           data-toggle="modal" data-target="#delete" id="deletejob">DELETE</button>
                       </div>
                     </td>
@@ -198,6 +194,12 @@ $(document).ready(function() {
               <label class="control-label col-sm-2" for="contactnumber">Contact:</label>
               <div class="col-sm-10">
                 <input type="number" class="form-control" id="contactnumber" placeholder="Contact Number" name="contactnumber">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="website">Website:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="website" placeholder="www.example.com" name="website">
               </div>
             </div>
             <div class="form-group">

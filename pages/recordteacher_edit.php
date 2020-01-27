@@ -1,10 +1,6 @@
 <?php 
 include('../session.php');
 include('../db.php');
-
-
-$survey_maxcount_qry = mysqli_query($con,"SELECT survey_maxattemp FROM `survey_maxcount` WHERE survey_ownerID = '$login_id'");
-$survey_maxattemp = mysqli_fetch_array($survey_maxcount_qry);
 $page = 'Record Teacher';
 $teacherID = $_REQUEST['teacherID'];
 $_SESSION['page'] = '';

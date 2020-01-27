@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2020 at 08:01 AM
+-- Generation Time: Jan 27, 2020 at 02:50 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -225,213 +225,13 @@ CREATE TABLE `suggested_job` (
   `job_company` varchar(50) NOT NULL,
   `job_email` varchar(50) DEFAULT NULL,
   `job_contact_number` varchar(50) DEFAULT NULL,
-  `job_description` varchar(300) DEFAULT NULL,
+  `website` varchar(50) NOT NULL,
+  `job_description` text DEFAULT NULL,
   `job_location` varchar(50) DEFAULT NULL,
   `job_field_work` varchar(20) NOT NULL,
   `job_posted_date` datetime NOT NULL DEFAULT current_timestamp(),
   `job_Course` int(11) UNSIGNED DEFAULT NULL,
   `job_status` varchar(10) NOT NULL DEFAULT 'Inactive'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `suggested_job`
---
-
-INSERT INTO `suggested_job` (`job_ID`, `job_Title`, `job_company`, `job_email`, `job_contact_number`, `job_description`, `job_location`, `job_field_work`, `job_posted_date`, `job_Course`, `job_status`) VALUES
-(45, 'Engineer', 'Tech Solution', 'mail@mail.com', '09206264079', 'Test<br />\r\nDescription', 'Manila', 'Local', '2020-01-17 14:46:30', NULL, 'Active');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `survey`
---
-
-CREATE TABLE `survey` (
-  `survey_ID` int(11) UNSIGNED NOT NULL,
-  `survey_name` varchar(255) DEFAULT NULL,
-  `survey_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `visibility` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `survey_answer`
---
-
-CREATE TABLE `survey_answer` (
-  `a_ID` int(11) UNSIGNED NOT NULL,
-  `survey_aID` int(11) UNSIGNED DEFAULT NULL,
-  `user_ID` int(11) DEFAULT NULL,
-  `form_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `survey_answer_other`
---
-
-CREATE TABLE `survey_answer_other` (
-  `ao_ID` int(11) NOT NULL,
-  `user_ID` int(11) DEFAULT NULL,
-  `survey_aID` int(11) NOT NULL,
-  `survey_aString` varchar(250) DEFAULT NULL,
-  `form_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `survey_anweroptions`
---
-
-CREATE TABLE `survey_anweroptions` (
-  `survey_aID` int(11) UNSIGNED NOT NULL,
-  `survey_qID` int(11) UNSIGNED DEFAULT NULL,
-  `answer` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `survey_forms`
---
-
-CREATE TABLE `survey_forms` (
-  `form_id` int(11) UNSIGNED NOT NULL,
-  `form_ownerID` int(11) UNSIGNED DEFAULT NULL,
-  `form_taken` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `survey_ID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `survey_maxcount`
---
-
-CREATE TABLE `survey_maxcount` (
-  `survey_id` int(11) UNSIGNED NOT NULL,
-  `survey_ownerID` int(11) UNSIGNED DEFAULT NULL,
-  `survey_maxattemp` int(11) DEFAULT NULL,
-  `survey_date` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `survey_question1`
---
-
-CREATE TABLE `survey_question1` (
-  `survey_qID` int(11) UNSIGNED NOT NULL,
-  `row` int(11) DEFAULT NULL,
-  `col1` varchar(50) DEFAULT NULL,
-  `col2` varchar(50) DEFAULT NULL,
-  `survey_formID` int(11) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `survey_question2`
---
-
-CREATE TABLE `survey_question2` (
-  `survey_qID` int(11) UNSIGNED NOT NULL,
-  `survey_row1` int(11) DEFAULT NULL,
-  `survey_col1` varchar(50) DEFAULT 'no',
-  `survey_formID` int(11) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `survey_question3`
---
-
-CREATE TABLE `survey_question3` (
-  `survey_qID` int(11) NOT NULL,
-  `row` int(11) DEFAULT NULL,
-  `col1` varchar(1) DEFAULT '0',
-  `col2` varchar(1) DEFAULT '0',
-  `survey_formID` int(11) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `survey_question4`
---
-
-CREATE TABLE `survey_question4` (
-  `survey_qID` int(11) UNSIGNED NOT NULL,
-  `row1` int(11) DEFAULT NULL,
-  `col1` varchar(1) DEFAULT '0',
-  `survey_formID` int(11) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `survey_question5`
---
-
-CREATE TABLE `survey_question5` (
-  `survey_qID` int(11) UNSIGNED NOT NULL,
-  `ans` varchar(5) DEFAULT NULL,
-  `survey_formID` int(11) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `survey_question6`
---
-
-CREATE TABLE `survey_question6` (
-  `survey_qID` int(11) UNSIGNED NOT NULL,
-  `ans` varchar(10) DEFAULT NULL,
-  `survey_formID` int(11) UNSIGNED DEFAULT NULL,
-  `job` varchar(250) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `survey_question7`
---
-
-CREATE TABLE `survey_question7` (
-  `survey_qID` int(11) UNSIGNED NOT NULL,
-  `survey_ans` varchar(1) DEFAULT '0',
-  `survey_formID` int(11) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `survey_question8`
---
-
-CREATE TABLE `survey_question8` (
-  `survey_qID` int(11) UNSIGNED NOT NULL,
-  `row1` int(11) DEFAULT NULL,
-  `col1` varchar(50) DEFAULT NULL,
-  `survey_formID` int(11) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `survey_questionnaire`
---
-
-CREATE TABLE `survey_questionnaire` (
-  `survey_qID` int(11) UNSIGNED NOT NULL,
-  `survey_ID` int(11) UNSIGNED DEFAULT NULL,
-  `question` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -453,7 +253,8 @@ CREATE TABLE `user_account` (
 --
 
 INSERT INTO `user_account` (`user_ID`, `user_level`, `user_name`, `user_password`, `user_created`) VALUES
-(3, 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2019-10-19 06:40:32');
+(3, 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2019-10-19 06:40:32'),
+(56, 1, '2016211036', 'c4ca4238a0b923820dcc509a6f75849b', '2020-01-19 05:56:29');
 
 -- --------------------------------------------------------
 
@@ -521,6 +322,13 @@ CREATE TABLE `user_notification` (
   `notif_date` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `notif_state` int(11) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_notification`
+--
+
+INSERT INTO `user_notification` (`notif_ID`, `notif_typeID`, `notif_topicID`, `notif_userID`, `notif_receiverID`, `notif_date`, `notif_state`) VALUES
+(7, 3, 28, 56, 3, '2020-01-19 07:07:38', 0);
 
 -- --------------------------------------------------------
 
@@ -707,107 +515,6 @@ ALTER TABLE `suggested_job`
   ADD KEY `job_Course` (`job_Course`);
 
 --
--- Indexes for table `survey`
---
-ALTER TABLE `survey`
-  ADD PRIMARY KEY (`survey_ID`);
-
---
--- Indexes for table `survey_answer`
---
-ALTER TABLE `survey_answer`
-  ADD PRIMARY KEY (`a_ID`);
-
---
--- Indexes for table `survey_answer_other`
---
-ALTER TABLE `survey_answer_other`
-  ADD PRIMARY KEY (`ao_ID`);
-
---
--- Indexes for table `survey_anweroptions`
---
-ALTER TABLE `survey_anweroptions`
-  ADD PRIMARY KEY (`survey_aID`);
-
---
--- Indexes for table `survey_forms`
---
-ALTER TABLE `survey_forms`
-  ADD PRIMARY KEY (`form_id`),
-  ADD KEY `form_ownerID` (`form_ownerID`);
-
---
--- Indexes for table `survey_maxcount`
---
-ALTER TABLE `survey_maxcount`
-  ADD PRIMARY KEY (`survey_id`),
-  ADD UNIQUE KEY `survey_ownerID_2` (`survey_ownerID`),
-  ADD KEY `survey_ownerID` (`survey_ownerID`);
-
---
--- Indexes for table `survey_question1`
---
-ALTER TABLE `survey_question1`
-  ADD PRIMARY KEY (`survey_qID`),
-  ADD KEY `survey_formID` (`survey_formID`);
-
---
--- Indexes for table `survey_question2`
---
-ALTER TABLE `survey_question2`
-  ADD PRIMARY KEY (`survey_qID`),
-  ADD KEY `survey_formID` (`survey_formID`);
-
---
--- Indexes for table `survey_question3`
---
-ALTER TABLE `survey_question3`
-  ADD PRIMARY KEY (`survey_qID`),
-  ADD KEY `survey_formID` (`survey_formID`);
-
---
--- Indexes for table `survey_question4`
---
-ALTER TABLE `survey_question4`
-  ADD PRIMARY KEY (`survey_qID`),
-  ADD KEY `survey_formID` (`survey_formID`);
-
---
--- Indexes for table `survey_question5`
---
-ALTER TABLE `survey_question5`
-  ADD PRIMARY KEY (`survey_qID`),
-  ADD KEY `survey_formID` (`survey_formID`);
-
---
--- Indexes for table `survey_question6`
---
-ALTER TABLE `survey_question6`
-  ADD PRIMARY KEY (`survey_qID`),
-  ADD KEY `survey_formID` (`survey_formID`);
-
---
--- Indexes for table `survey_question7`
---
-ALTER TABLE `survey_question7`
-  ADD PRIMARY KEY (`survey_qID`),
-  ADD KEY `survey_formID` (`survey_formID`);
-
---
--- Indexes for table `survey_question8`
---
-ALTER TABLE `survey_question8`
-  ADD PRIMARY KEY (`survey_qID`),
-  ADD KEY `survey_formID` (`survey_formID`);
-
---
--- Indexes for table `survey_questionnaire`
---
-ALTER TABLE `survey_questionnaire`
-  ADD PRIMARY KEY (`survey_qID`);
-
---
 -- Indexes for table `user_account`
 --
 ALTER TABLE `user_account`
@@ -909,7 +616,7 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `forum_comment`
 --
 ALTER TABLE `forum_comment`
-  MODIFY `comment_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `comment_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `forum_comment_reply`
@@ -921,7 +628,7 @@ ALTER TABLE `forum_comment_reply`
 -- AUTO_INCREMENT for table `forum_topic`
 --
 ALTER TABLE `forum_topic`
-  MODIFY `topic_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `topic_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `marital_status`
@@ -957,103 +664,13 @@ ALTER TABLE `message_thread_participant`
 -- AUTO_INCREMENT for table `suggested_job`
 --
 ALTER TABLE `suggested_job`
-  MODIFY `job_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
-
---
--- AUTO_INCREMENT for table `survey`
---
-ALTER TABLE `survey`
-  MODIFY `survey_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT for table `survey_answer`
---
-ALTER TABLE `survey_answer`
-  MODIFY `a_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
-
---
--- AUTO_INCREMENT for table `survey_answer_other`
---
-ALTER TABLE `survey_answer_other`
-  MODIFY `ao_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `survey_anweroptions`
---
-ALTER TABLE `survey_anweroptions`
-  MODIFY `survey_aID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
-
---
--- AUTO_INCREMENT for table `survey_forms`
---
-ALTER TABLE `survey_forms`
-  MODIFY `form_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- AUTO_INCREMENT for table `survey_maxcount`
---
-ALTER TABLE `survey_maxcount`
-  MODIFY `survey_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
-
---
--- AUTO_INCREMENT for table `survey_question1`
---
-ALTER TABLE `survey_question1`
-  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
-
---
--- AUTO_INCREMENT for table `survey_question2`
---
-ALTER TABLE `survey_question2`
-  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
---
--- AUTO_INCREMENT for table `survey_question3`
---
-ALTER TABLE `survey_question3`
-  MODIFY `survey_qID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
-
---
--- AUTO_INCREMENT for table `survey_question4`
---
-ALTER TABLE `survey_question4`
-  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
-
---
--- AUTO_INCREMENT for table `survey_question5`
---
-ALTER TABLE `survey_question5`
-  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `survey_question6`
---
-ALTER TABLE `survey_question6`
-  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `survey_question7`
---
-ALTER TABLE `survey_question7`
-  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `survey_question8`
---
-ALTER TABLE `survey_question8`
-  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
-
---
--- AUTO_INCREMENT for table `survey_questionnaire`
---
-ALTER TABLE `survey_questionnaire`
-  MODIFY `survey_qID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `job_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `user_account`
 --
 ALTER TABLE `user_account`
-  MODIFY `user_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `user_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `user_admin_detail`
@@ -1071,7 +688,7 @@ ALTER TABLE `user_level`
 -- AUTO_INCREMENT for table `user_notification`
 --
 ALTER TABLE `user_notification`
-  MODIFY `notif_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `notif_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user_notif_state`
@@ -1089,19 +706,19 @@ ALTER TABLE `user_notif_type`
 -- AUTO_INCREMENT for table `user_student_detail`
 --
 ALTER TABLE `user_student_detail`
-  MODIFY `student_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `student_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `user_teacher_detail`
 --
 ALTER TABLE `user_teacher_detail`
-  MODIFY `teacher_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
+  MODIFY `teacher_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
 
 --
 -- AUTO_INCREMENT for table `view_counter`
 --
 ALTER TABLE `view_counter`
-  MODIFY `view_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `view_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
@@ -1166,66 +783,6 @@ ALTER TABLE `message_thread_participant`
 --
 ALTER TABLE `suggested_job`
   ADD CONSTRAINT `suggested_job_ibfk_1` FOREIGN KEY (`job_Course`) REFERENCES `capsu_course` (`course_ID`);
-
---
--- Constraints for table `survey_forms`
---
-ALTER TABLE `survey_forms`
-  ADD CONSTRAINT `survey_forms_ibfk_1` FOREIGN KEY (`form_ownerID`) REFERENCES `user_account` (`user_ID`);
-
---
--- Constraints for table `survey_maxcount`
---
-ALTER TABLE `survey_maxcount`
-  ADD CONSTRAINT `survey_maxcount_ibfk_1` FOREIGN KEY (`survey_ownerID`) REFERENCES `user_account` (`user_ID`);
-
---
--- Constraints for table `survey_question1`
---
-ALTER TABLE `survey_question1`
-  ADD CONSTRAINT `survey_question1_ibfk_1` FOREIGN KEY (`survey_formID`) REFERENCES `survey_forms` (`form_id`);
-
---
--- Constraints for table `survey_question2`
---
-ALTER TABLE `survey_question2`
-  ADD CONSTRAINT `survey_question2_ibfk_1` FOREIGN KEY (`survey_formID`) REFERENCES `survey_forms` (`form_id`);
-
---
--- Constraints for table `survey_question3`
---
-ALTER TABLE `survey_question3`
-  ADD CONSTRAINT `survey_question3_ibfk_1` FOREIGN KEY (`survey_formID`) REFERENCES `survey_forms` (`form_id`);
-
---
--- Constraints for table `survey_question4`
---
-ALTER TABLE `survey_question4`
-  ADD CONSTRAINT `survey_question4_ibfk_1` FOREIGN KEY (`survey_formID`) REFERENCES `survey_forms` (`form_id`);
-
---
--- Constraints for table `survey_question5`
---
-ALTER TABLE `survey_question5`
-  ADD CONSTRAINT `survey_question5_ibfk_1` FOREIGN KEY (`survey_formID`) REFERENCES `survey_forms` (`form_id`);
-
---
--- Constraints for table `survey_question6`
---
-ALTER TABLE `survey_question6`
-  ADD CONSTRAINT `survey_question6_ibfk_1` FOREIGN KEY (`survey_formID`) REFERENCES `survey_forms` (`form_id`);
-
---
--- Constraints for table `survey_question7`
---
-ALTER TABLE `survey_question7`
-  ADD CONSTRAINT `survey_question7_ibfk_1` FOREIGN KEY (`survey_formID`) REFERENCES `survey_forms` (`form_id`);
-
---
--- Constraints for table `survey_question8`
---
-ALTER TABLE `survey_question8`
-  ADD CONSTRAINT `survey_question8_ibfk_1` FOREIGN KEY (`survey_formID`) REFERENCES `survey_forms` (`form_id`);
 
 --
 -- Constraints for table `user_account`

@@ -45,24 +45,36 @@ else if ($_SESSION['page'] == 'Your Posts')
           <h1><?php echo $post_title ?></h1>
           <!-- Author -->
           <p class="lead">
-            by <a href="profile.php?id"><?php  
+            by <a href="#"><?php  
                                   if($query_postowner = mysqli_query($con,"SELECT student_fName,student_mName,student_lName FROM `user_student_detail` WHERE `student_userID` = '$post_owner'")) {
-                                     $res_postowner = mysqli_fetch_assoc($query_postowner);
+                                    if(mysqli_num_rows($query_postowner) != 0)
+                                    {
+                                      $res_postowner = mysqli_fetch_assoc($query_postowner);
                                      echo $res_postowner['student_fName'].
                                      " ".$res_postowner['student_mName'].
                                      " ".$res_postowner['student_lName'];
+                                    }
+                                     
                                   }
                                   if($query_postowner = mysqli_query($con,"SELECT teacher_fName,teacher_mName,teacher_lName FROM `user_teacher_detail` WHERE `teacher_userID` = '$post_owner'")) {
-                                     $res_postowner = mysqli_fetch_assoc($query_postowner);
-                                     echo $res_postowner['teacher_fName'].
-                                     " ".$res_postowner['teacher_mName'].
-                                     " ".$res_postowner['teacher_lName'];
+                                    if(mysqli_num_rows($query_postowner) != 0)
+                                    {
+                                      $res_postowner = mysqli_fetch_assoc($query_postowner);
+                                      echo $res_postowner['teacher_fName'].
+                                      " ".$res_postowner['teacher_mName'].
+                                      " ".$res_postowner['teacher_lName'];
+                                    }
+                                     
                                   }
                                   if($query_postowner = mysqli_query($con,"SELECT admin_fName,admin_mName,admin_lName FROM `user_admin_detail` WHERE `admin_userID` = '$post_owner'")) {
-                                     $res_postowner = mysqli_fetch_assoc($query_postowner);
+                                    if(mysqli_num_rows($query_postowner) != 0)
+                                    {
+                                      $res_postowner = mysqli_fetch_assoc($query_postowner);
                                      echo $res_postowner['admin_fName'].
                                      " ".$res_postowner['admin_mName'].
                                      " ".$res_postowner['admin_lName'];
+                                    }
+                                     
                                   }?></a></p>
           <hr>
 

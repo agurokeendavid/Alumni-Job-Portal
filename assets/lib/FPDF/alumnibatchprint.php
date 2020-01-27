@@ -14,7 +14,7 @@ class PDF extends FPDF{
 		$this->Image('../../img/capsu-logo-nobg.png',25,6,20);
 		$this->SetFont('Times','B',15);
 		$this->Cell(80);
-		$this->Cell(30,10,'CAPSU - ALUMNI PORTAL',0,1,'C');
+		$this->Cell(30,10,'CAPSU - ALUMNI JOB PORTAL',0,1,'C');
 		$this->Cell(80);
 
 		if ($req_course == 2) {
