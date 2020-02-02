@@ -39,7 +39,8 @@ if (isset($_POST['edit-job'])) {
     $email = $_POST['emailaddress'];
     $contact = $_POST['contactnumber'];
     $website = $_POST['website'];
-    $Description = nl2br($_POST['Description']);
+    $Description = nl2br(str_replace("<br />", "", $_POST['Description']));
+    // $Description = nl2br($_POST['Description']);
     $Location = $_POST['Location'];
     $fieldwork = $_POST['fieldwork'];
     // $course = $_POST['course'];
