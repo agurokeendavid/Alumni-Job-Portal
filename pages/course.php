@@ -74,12 +74,12 @@ if ($login_level == '1')
 
             <div>
               <button class="btn btn-primary" class="btn btn-info btn-lg" data-toggle="modal" data-target="#add">ADD
-                COURSE</button>
+                NEW</button>
               <br> <br><br>
               <table class="table table-bordered" id="11">
                 <thead>
                   <tr>
-                    <th>Department</th>
+                    <th>College</th>
                     <th>Course</th>
                     <th class="text-center">Action</th>
                   </tr>

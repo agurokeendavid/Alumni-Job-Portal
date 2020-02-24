@@ -26,7 +26,7 @@ if(isset($_SESSION['login_user']))
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>CAPSU PONTEVEDRA ALUMNI JOB PORTAL | Log in</title>
+  <title>CAPSU PONTEVEDRA ALUMNI PORTAL | Log in</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -66,7 +66,7 @@ if(isset($_SESSION['login_user']))
     <div class="text-center">
       <img src="assets/img/capsu-logo-nobg.png" alt="Capsu Logo" style="width: 100px;">
       <h5>Capiz State University Pontevedra</h5>
-      <h3>Alumni Job Portal</h3>
+      <h3>Alumni Portal</h3>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
@@ -163,7 +163,7 @@ if(isset($_SESSION['login_user']))
       <div class="navbar-header">
         <img src="assets/img/capsu-logo-nobg.png" alt="Capsu Alumni Job Portal"
           style="width: 40px; height:40px; margin-top: 6px; margin-right: 6px;">
-        <a class="navbar-brand" href="#">Capsu Alumni Job Portal</a>
+        <a class="navbar-brand" href="#">Capsu Alumni Portal</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->

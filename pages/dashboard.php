@@ -96,21 +96,20 @@ $totalJob = $json->DataCount($totalresult_ofJob);
   <section class="content">
     <!-- Small boxes (Stat box) -->
     <div class="row">
-      <div class="col-lg-3 col-xs-6">
+    <div class="col-lg-3 col-xs-6">
         <!-- small box -->
-        <div class="small-box bg-aqua">
+        <div class="small-box bg-yellow">
           <div class="inner">
-            <h3><?php echo $totalAcc_register_asStudent;?></h3>
+            <h3><?php echo $totalAcc_register_asAdmin; ?></h3>
 
-            <p>Registered Students</p>
+            <p>Registered Administrator</p>
           </div>
           <div class="icon">
             <i class="ion ion-person-add"></i>
           </div>
-          <a href="<?php if($login_level == 3) { echo 'recordstudent.php'; } else { echo '#';}?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
-      <!-- ./col -->
       <div class="col-lg-3 col-xs-6">
         <!-- small box -->
         <div class="small-box bg-green">
@@ -126,20 +125,22 @@ $totalJob = $json->DataCount($totalresult_ofJob);
         </div>
       </div>
       <!-- ./col -->
+      
       <div class="col-lg-3 col-xs-6">
         <!-- small box -->
-        <div class="small-box bg-yellow">
+        <div class="small-box bg-aqua">
           <div class="inner">
-            <h3><?php echo $totalAcc_register_asAdmin; ?></h3>
+            <h3><?php echo $totalAcc_register_asStudent;?></h3>
 
-            <p>Registered Administrator</p>
+            <p>Registered Students</p>
           </div>
           <div class="icon">
             <i class="ion ion-person-add"></i>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="<?php if($login_level == 3) { echo 'recordstudent.php'; } else { echo '#';}?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
+      <!-- ./col -->
       <!-- ./col -->
       <?php if ($userType == "student") { ?>
       <div class="col-lg-3 col-xs-6">
@@ -168,7 +169,7 @@ $totalJob = $json->DataCount($totalresult_ofJob);
           <div class="icon">
             <i class="ion ion-document"></i>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="suggestedjob.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <?php } ?>

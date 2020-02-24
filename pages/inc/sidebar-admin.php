@@ -114,7 +114,7 @@ else
                                   }
                                    ?>
         <a href="recordstudent.php">
-          <i class="fa fa-plus-square"></i> <span>Record Student</span>
+          <i class="fa fa-plus-square"></i> <span>Alumni Record</span>
         </a>
       </li>
       <?php 
@@ -132,7 +132,7 @@ else
                                   }
                                    ?>
         <a href="recordteacher.php">
-          <i class="fa fa-plus-square"></i> <span>Record Teacher</span>
+          <i class="fa fa-plus-square"></i> <span>Alumni Coordinator</span>
         </a>
       </li>
       <?php 
@@ -150,7 +150,7 @@ else
                                   }
                                    ?>
         <a href="suggestedjob.php">
-          <i class="fa fa-filter"></i> <span>Suggested Job</span>
+          <i class="fa fa-filter"></i> <span>Suggested Jobs</span>
         </a>
       </li>
       <?php 
