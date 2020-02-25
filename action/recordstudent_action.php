@@ -7,6 +7,7 @@
 		$student_firstname = $_POST['student_firstname'];
 		$student_middlename = $_POST['student_middlename'];
 		$student_lastname = $_POST['student_lastname'];
+		$student_email = $_POST['student_email'];
 		$student_dob = $_POST['student_dob'];
 		$student_contact = $_POST['student_contact'];
 		$student_gender = $_POST['student_gender'];
@@ -19,50 +20,55 @@
 		
 		if ($student_sinumber )
 
-		if (empty($student_sinumber) || empty($student_firstname)|| empty($student_middlename)|| empty($student_lastname)|| empty($student_adress)|| empty($student_year_grad)|| empty($student_year_admission)|| empty($student_department) || empty($student_course)) {
+		if (empty($student_sinumber) || empty($student_firstname)|| empty($student_middlename)|| empty($student_lastname)|| empty($student_adress)|| empty($student_year_grad)|| empty($student_year_admission)|| empty($student_department) || empty($student_course) || empty($student_email)) {
 			if (empty($student_sinumber) ) {
-				echo "<script>alert('Empty student_sinumber !');
+				echo "<script>alert('Empty id number !');
 														window.location='../pages/recordstudent.php';
 													</script>";
 			}
 			if (empty($student_firstname)) {
-				echo "<script>alert('Empty student_firstname !');
+				echo "<script>alert('Empty firstname !');
 														window.location='../pages/recordstudent.php';
 													</script>";
 			}
 			if (empty($student_middlename)) {
-				echo "<script>alert('Empty student_middlename !');
+				echo "<script>alert('Empty middlename !');
 														window.location='../pages/recordstudent.php';
 													</script>";
 			}
 			if (empty($student_lastname)) {
-				echo "<script>alert('Empty student_lastname !');
+				echo "<script>alert('Empty lastname !');
+														window.location='../pages/recordstudent.php';
+													</script>";
+			}
+			if (empty($student_email)) {
+				echo "<script>alert('Empty email !');
 														window.location='../pages/recordstudent.php';
 													</script>";
 			}
 			if (empty($student_adress)) {
-				echo "<script>alert('Empty student_adress !');
+				echo "<script>alert('Empty address !');
 														window.location='../pages/recordstudent.php';
 													</script>";
 			}
 			if (empty($student_year_grad)) {
-				echo "<script>alert('Empty student_year_grad !');
+				echo "<script>alert('Empty year graduated !');
 														window.location='../pages/recordstudent.php';
 													</script>";
 			}
 			if (empty($student_year_admission)) {
-				echo "<script>alert('Empty student_year_admission !');
+				echo "<script>alert('Empty year admission !');
 														window.location='../pages/recordstudent.php';
 													</script>";
 			}
 			if (empty($student_department)) {
-				echo "<script>alert('Empty student_department !');
+				echo "<script>alert('Empty department !');
 														window.location='../pages/recordstudent.php';
 													</script>";
 			}
 
 			if (empty($student_course)) {
-				echo "<script>alert('Empty student_course !');
+				echo "<script>alert('Empty course !');
 														window.location='../pages/recordstudent.php';
 													</script>";
 			}
@@ -86,7 +92,7 @@
 											`student_course`,
 				               `student_status`,
 				                `student_secretquestion`,
-				                 `student_secretanswer`) 
+				                 `student_secretanswer`, `student_email`) 
 
 								 VALUES (
 				   '$student_sinumber',
@@ -104,7 +110,8 @@
 				              '$student_course',
 				               'unregister',
 				                NULL,
-								 NULL);";
+								 NULL,
+								 '$student_email');";
 								 if ($res = mysqli_query($con,$sql)) {
 									$last_id = mysqli_insert_id($con);
 									$chk = "UPDATE `user_student_detail` 
@@ -112,9 +119,15 @@
 									
 									if($res)
 									{
-										echo "<script>alert('Successfully Added!');
-										window.location='../pages/recordstudent.php';
-									</script>";
+										$sql = "INSERT INTO student_tracer_detail (student_ID, campus) VALUES ($student_sinumber, 'Pontevedra');";
+										if (mysqli_query($con, $sql))
+										{
+											echo "<script>alert('Successfully Added!');
+											window.location='../pages/recordstudent.php';
+										</script>";
+										}
+											
+										
 									}
 									else
 									{

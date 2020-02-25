@@ -167,10 +167,19 @@ if ($login_level == '1')
 
                   </div>
                   <div class="panel-body bio-graph-info">
+                  <?php if ($login_level == 1)
+                  {
+                    ?>
+                    <a href="" class="pull-left btn btn-primary" data-toggle="modal"
+                        data-target="#update-modal">UPDATE DATA</a>
+                        <br>
                     <h1>Bio Graph
+                    <?php }?>
+                  
+                    
                       <a href="" class="pull-right btn btn-primary" data-toggle="modal"
-                        data-target="#test-modal">EDIT</a></h1>
-
+                        data-target="#test-modal">EDIT ACCOUNT</a></h1>
+                        
                     <div class="row">
                       <div class="bio-row">
                         <img class="media-object img-thumbnail user-img" alt="User Picture"
@@ -274,6 +283,84 @@ $z = mysqli_fetch_array($z);
 
 
               <div class="container">
+
+<!-- update data Modal -->
+<div class="modal fade" id="update-modal" data-modal-index="1">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span
+                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">Update Data</h4>
+                      </div>
+                      <div class="modal-body">
+                        <form class="form-horizontal" id="update_tracer" action="../action/updatetracer.php" name="update_tracer" method="post">
+                        <?php 
+                        $z = mysqli_query($con,"SELECT * FROM student_tracer_detail WHERE student_ID = " . $res_sidebar[$userType.'_IDNumber']);
+                        $z = mysqli_fetch_array($z); ?>
+                        <div class="form-group">
+                        <label class="control-label col-lg-4" for="idnumber">ID Number</label>
+                            <div class="col-lg-4">
+                              <input type="text" class="validate[required] form-control" name="idnumber" id="idnumber"
+                                value="<?php echo $z["student_ID"];?>" readonly>
+                            </div>
+                            </div>
+                            <div class="form-group">
+                            <label class="control-label col-lg-4">Date Hired for Current Job</label>
+                            <div class="col-lg-4">
+                              <input type="date" class="validate[required] form-control" name="datehired" id="datehired"
+                                value="<?php echo $z["date_hired_current_job"];?>">
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                        <label class="control-label col-lg-4" for="statusemployment">Status of Employment After Graduation</label>
+                            <div class="col-lg-4">
+                              <input type="text" class="validate[required] form-control" name="statusemployment" id="statusemployment"
+                                value="<?php echo $z["status_employment"];?>">
+                            </div>
+                            </div>
+
+                            <div class="form-group">
+                        <label class="control-label col-lg-4" for="monthlyincome">Monthly Income</label>
+                            <div class="col-lg-4">
+                              <input type="number" class="validate[required] form-control" name="monthlyincome" id="monthlyincome"
+                                value="<?php echo $z["monthly_income"];?>">
+                            </div>
+                            </div>
+
+                            <div class="form-group">
+                        <label class="control-label col-lg-4" for="percentageincrease">Percentage Increase in Income</label>
+                            <div class="col-lg-4">
+                              <input type="number" class="validate[required] form-control" name="percentageincrease" id="percentageincrease"
+                                value="<?php echo $z["percentage_increase"];?>">
+                            </div>
+                            </div>
+
+                            <div class="form-group">
+                        <label class="control-label col-lg-4" for="employer">Employer</label>
+                            <div class="col-lg-4">
+                              <input type="text" class="validate[required] form-control" name="employer" id="employer"
+                                value="<?php echo $z["employer"];?>">
+                            </div>
+                            </div>
+                            <div class="form-group">
+                            <label class="control-label col-lg-4"></label>
+                            <div class="col-lg-4">
+                              <input type="Submit" class="btn btn-primary" name="update_tracer" value="Submit">
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+
+
 
                 <!-- Edit Modal -->
                 <div class="modal fade" id="test-modal" data-modal-index="1">

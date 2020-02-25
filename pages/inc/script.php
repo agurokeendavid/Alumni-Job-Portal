@@ -227,6 +227,53 @@ $(document).ready(function() {
 
 
 });
+
+$(document).ready(function() {
+  var dataTable = $('#registeredtracer_server').DataTable({
+
+    "processing": true,
+    "serverSide": true,
+    "bAutoWidth": false,
+    // "bSort": false,
+    "bLengthChange": false,
+    "columnDefs": [{
+        className: "text-center",
+        "targets": 1,
+        "searchable": false
+      },
+      {
+        className: "text-center",
+        "targets": 2,
+        "searchable": false
+      },
+      {
+        className: "text-center",
+        "targets": 3,
+        "searchable": false
+      },
+      {
+        className: "text-center",
+        "targets": 4,
+        "searchable": false
+      }
+    ],
+    "ajax": {
+      url: "serverside_data_registeredtracer.php", // json datasource
+      type: "post", // method  , by default get
+      error: function() { // error handling
+        $(".registerstud_serverside-error").html("");
+        $("#eregisterstud_serverside").append(
+          '<tbody class="registerstud_serverside-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>'
+        );
+        $("#registerstud_serverside_processing").css("display", "none");
+
+
+      }
+
+    }
+  });
+});
+
 $(document).ready(function() {
   var dataTable = $('#forumData_User_Unpin').DataTable({
     // "stripeClasses": [],

@@ -116,7 +116,7 @@ if ($login_level == '1')
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
               class="sr-only">Close</span></button>
-          <h4 class="modal-title">Add Student Record</h4>
+          <h4 class="modal-title">Add Alumna Record</h4>
         </div>
         <div class="modal-body">
 
@@ -124,65 +124,71 @@ if ($login_level == '1')
           <div class="body">
             <form id="myform" class="form-horizontal" method="POST" action="../action/recordstudent_action.php">
               <div class="form-group">
-                <label for="text1" class="control-label col-lg-4">ID Number</label>
+                <label for="idnumber" class="control-label col-lg-4">ID Number</label>
 
                 <div class="col-lg-8">
-                  <input type="text" id="text1" placeholder="ID Number" class="form-control" name="student_sinumber"
+                  <input type="text" id="idnumber" placeholder="ID Number" class="form-control" name="student_sinumber"
                     onkeyup="numberInputOnly(this);" required="">
                 </div>
               </div>
               <div class="form-group">
-                <label for="text1" class="control-label col-lg-4">First Name</label>
+                <label for="firstname" class="control-label col-lg-4">First Name</label>
 
                 <div class="col-lg-8">
-                  <input type="text" id="text1" placeholder="First Name" class="form-control" name="student_firstname"
+                  <input type="text" id="firstname" placeholder="First Name" class="form-control" name="student_firstname"
                     onkeyup="letterInputOnly(this);" required="">
                 </div>
               </div>
               <div class="form-group">
-                <label for="text1" class="control-label col-lg-4">Middle Initial</label>
+                <label for="middlename" class="control-label col-lg-4">Middle Initial</label>
 
                 <div class="col-lg-8">
-                  <input type="text" id="text1" placeholder="Middle Name" class="form-control" name="student_middlename"
+                  <input type="text" id="middlename" placeholder="Middle Name" class="form-control" name="student_middlename"
                     onkeyup="letterInputOnly(this);" required="" maxlength="1">
                 </div>
               </div>
               <div class="form-group">
-                <label for="text1" class="control-label col-lg-4">Last Name</label>
+                <label for="lastname" class="control-label col-lg-4">Last Name</label>
 
                 <div class="col-lg-8">
-                  <input type="text" id="text1" placeholder="Last Name" class="form-control" name="student_lastname"
+                  <input type="text" id="lastname" placeholder="Last Name" class="form-control" name="student_lastname"
                     onkeyup="letterInputOnly(this);" required="">
                 </div>
               </div>
               <div class="form-group">
-                <label for="text1" class="control-label col-lg-4">Birthday</label>
-
+                <label for="emailaddress" class="control-label col-lg-4">Email Address</label>
                 <div class="col-lg-8">
-                  <input type="date" id="text1" placeholder="Birthday" class="form-control" name="student_dob">
+                  <input type="email" id="emailaddress" placeholder="Email Address" class="form-control" name="student_email" required>
                 </div>
               </div>
               <div class="form-group">
-                <label for="text1" class="control-label col-lg-4">Contact</label>
+                <label for="birthday" class="control-label col-lg-4">Birthday</label>
 
                 <div class="col-lg-8">
-                  <input type="number" id="text1" placeholder="Contact" class="form-control" name="student_contact"
+                  <input type="date" id="birthday" placeholder="Birthday" class="form-control" name="student_dob">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="contact" class="control-label col-lg-4">Contact</label>
+
+                <div class="col-lg-8">
+                  <input type="number" id="contact" placeholder="Contact" class="form-control" name="student_contact"
                     onkeyup="numberInputOnly(this);" required="">
                 </div>
               </div>
               <div class="form-group">
-                <label for="text1" class="control-label col-lg-4">Gender</label>
+                <label for="gender" class="control-label col-lg-4">Gender</label>
                 <div class="col-lg-8">
-                  <select class="form-control" name="student_gender">
+                  <select class="form-control" name="student_gender" id="gender">
                     <option value="M">Male</option>
                     <option value="F">Female</option>
                   </select>
                 </div>
               </div>
               <div class="form-group">
-                <label for="text1" class="control-label col-lg-4">Civil Status</label>
+                <label for="civilstatus" class="control-label col-lg-4">Civil Status</label>
                 <div class="col-lg-8">
-                  <select class="form-control" name="student_civil">
+                  <select class="form-control" name="student_civil" id="civilstatus">
                     <?php 
                                             $mstat_q = mysqli_query($con,"SELECT * FROM `marital_status`");
                                             while ($mstat = mysqli_fetch_array($mstat_q)) {
@@ -195,21 +201,21 @@ if ($login_level == '1')
                 </div>
               </div>
               <div class="form-group">
-                <label for="text1" class="control-label col-lg-4">Address</label>
+                <label for="address" class="control-label col-lg-4">Address</label>
 
                 <div class="col-lg-8">
-                  <input type="text" id="text1" placeholder="Address" class="form-control" name="student_adress"
+                  <input type="text" id="address" placeholder="Address" class="form-control" name="student_adress"
                     required="">
                 </div>
               </div>
               <div class="form-group">
-                <label for="text1" class="control-label col-lg-4">Department</label>
+                <label for="department" class="control-label col-lg-4">Department</label>
 
                 <div class="col-lg-8">
                   <?php 
                                     $query_dep = mysqli_query($con,"SELECT * FROM `capsu_department`");
                                     ?>
-                  <select class="form-control" name="student_department" required>
+                  <select class="form-control" name="student_department" id="department" required>
                     <?php
                                         while ($res_dep = mysqli_fetch_array($query_dep)) {
                                         
@@ -222,13 +228,13 @@ if ($login_level == '1')
                 </div>
               </div>
               <div class="form-group">
-                <label for="text1" class="control-label col-lg-4">Course</label>
+                <label for="course" class="control-label col-lg-4">Course</label>
 
                 <div class="col-lg-8">
                   <?php 
                                     $query_course = mysqli_query($con,"SELECT * FROM `capsu_course`");
                                     ?>
-                  <select class="form-control" name="student_course" required>
+                  <select class="form-control" name="student_course" id="course" required>
                     <?php
                                         while ($res_course = mysqli_fetch_array($query_course)) {
                                         
@@ -241,22 +247,22 @@ if ($login_level == '1')
                 </div>
               </div>
               <div class="form-group">
-                <label for="text1" class="control-label col-lg-4">Year Admission</label>
+                <label for="yearadmission" class="control-label col-lg-4">Year Admission</label>
 
                 <div class="col-lg-8">
-                  <div class="input-group date" id="">
-                    <input type="date" class="form-control" name="student_year_admission" required="">
+                  <div class="input-group date">
+                    <input type="date" class="form-control" name="student_year_admission" id="yearadmission" required >
                     <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
                     </span>
                   </div>
                 </div>
               </div>
               <div class="form-group">
-                <label for="text1" class="control-label col-lg-4">Year Graduate</label>
+                <label for="yeargraduate" class="control-label col-lg-4">Year Graduate</label>
 
                 <div class="col-lg-8">
                   <div class="input-group date" id="">
-                    <input type="date" class="form-control" name="student_year_grad" required="">
+                    <input type="date" class="form-control" name="student_year_grad" id="yeargraduate" required>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
                     </span>
                   </div>

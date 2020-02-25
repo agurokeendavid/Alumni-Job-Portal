@@ -7,6 +7,7 @@
 		$student_firstname = $_POST['student_firstname'];
 		$student_middlename = $_POST['student_middlename'];
 		$student_lastname = $_POST['student_lastname'];
+		$student_email = $_POST['student_email'];
     $student_adress = $_POST['student_adress'];
     $student_dob = $_POST['student_bday'];
 		$student_year_grad = $_POST['student_year_grad'];
@@ -20,6 +21,7 @@
 		$student_firstname = stripslashes($student_firstname);
 		$student_middlename = stripslashes($student_middlename);
 		$student_lastname = stripslashes($student_lastname);
+		$student_email = stripslashes($student_email);
 		$student_adress = stripslashes($student_adress);
 		$student_dob = stripslashes($student_dob);
 		$student_year_grad = stripslashes($student_year_grad);
@@ -33,6 +35,7 @@
 		$student_firstname = mysqli_real_escape_string($con,$student_firstname);
 		$student_middlename = mysqli_real_escape_string($con,$student_middlename);
 		$student_lastname = mysqli_real_escape_string($con,$student_lastname);
+		$student_email = mysqli_real_escape_string($con,$student_email);
     $student_adress = mysqli_real_escape_string($con,$student_adress);
     $student_dob = mysqli_real_escape_string($con, $student_dob);
 		$student_year_grad = mysqli_real_escape_string($con,$student_year_grad);
@@ -42,39 +45,45 @@
 		$student_contact = mysqli_real_escape_string($con,$student_contact);
 		$student_civil = mysqli_real_escape_string($con,$student_civil);
 
-if (empty($student_sinumber) || empty($student_firstname)|| empty($student_middlename)|| empty($student_lastname)|| empty($student_adress)|| empty($student_dob) || empty($student_year_grad)|| empty($student_year_admission)|| empty($student_department) || empty($student_course)) {
+if (empty($student_sinumber) || empty($student_firstname)|| empty($student_middlename)|| empty($student_lastname)|| empty($student_adress)|| empty($student_dob) || empty($student_year_grad)|| empty($student_year_admission)|| empty($student_department) || empty($student_course) || empty($student_email)) {
 	if (empty($student_sinumber) ) {
-		echo "<script>alert('Empty student_sinumber !');
+		echo "<script>alert('Empty id number !');
 												window.location='../pages/recordstudent.php';
 											</script>";
 	}
 	if (empty($student_firstname)) {
-		echo "<script>alert('Empty student_firstname !');
+		echo "<script>alert('Empty firstname !');
 												window.location='../pages/recordstudent.php';
 											</script>";
 	}
 	if (empty($student_middlename)) {
-		echo "<script>alert('Empty student_middlename !');
+		echo "<script>alert('Empty middlename !');
 												window.location='../pages/recordstudent.php';
 											</script>";
 	}
 	if (empty($student_lastname)) {
-		echo "<script>alert('Empty student_lastname !');
+		echo "<script>alert('Empty lastname !');
+												window.location='../pages/recordstudent.php';
+											</script>";
+	}
+
+	if (empty($student_email)) {
+		echo "<script>alert('Empty email address!');
 												window.location='../pages/recordstudent.php';
 											</script>";
 	}
 	if (empty($student_adress)) {
-		echo "<script>alert('Empty student_adress !');
+		echo "<script>alert('Empty address !');
 												window.location='../pages/recordstudent.php';
 											</script>";
   }
   if (empty($student_dob)) {
-		echo "<script>alert('Empty student_dob !');
+		echo "<script>alert('Empty date of birth !');
 												window.location='../pages/recordstudent.php';
 											</script>";
 	}
 	if (empty($student_year_grad)) {
-		echo "<script>alert('Empty student_year_grad !');
+		echo "<script>alert('Empty year graduated !');
 												window.location='../pages/recordstudent.php';
 											</script>";
 	}
@@ -84,12 +93,12 @@ if (empty($student_sinumber) || empty($student_firstname)|| empty($student_middl
 											</script>";
 	}
 	if (empty($student_department)) {
-		echo "<script>alert('Empty student_department !');
+		echo "<script>alert('Empty department !');
 												window.location='../pages/recordstudent.php';
 											</script>";
 	}
 	if (empty($student_course)) {
-		echo "<script>alert('Empty student_course !');
+		echo "<script>alert('Empty course !');
 												window.location='../pages/recordstudent.php';
 											</script>";
 	}
@@ -106,7 +115,7 @@ else{
 			
 
 			//insert query
-			$sql = "UPDATE `user_student_detail` SET  student_IDNumber = '$student_sinumber', student_fName = '$student_firstname', student_mName = '$student_middlename', student_lName = '$student_lastname', student_address = '$student_adress', student_dob = '$student_dob', student_admission = '$student_year_admission', student_year_grad = '$student_year_grad', student_department = '$student_department', student_course = '$student_course',student_contact = '$student_contact', student_civilStat = '$student_civil'";
+			$sql = "UPDATE `user_student_detail` SET  student_IDNumber = '$student_sinumber', student_fName = '$student_firstname', student_mName = '$student_middlename', student_lName = '$student_lastname', student_address = '$student_adress', student_dob = '$student_dob', student_admission = '$student_year_admission', student_year_grad = '$student_year_grad', student_department = '$student_department', student_course = '$student_course',student_contact = '$student_contact', student_civilStat = '$student_civil', student_email = '$student_email'";
 
 			$sql.= "  WHERE `user_student_detail`.`student_ID` = $studentID;";
 			$res = mysqli_query($con,$sql);

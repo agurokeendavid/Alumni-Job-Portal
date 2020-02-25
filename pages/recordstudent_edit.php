@@ -85,6 +85,7 @@ if ($login_level == '1')
                             $student_admission = $edit_sql['student_admission'];
                             $student_year_grad = $edit_sql['student_year_grad'];
                             $student_contact = $edit_sql['student_contact'];
+                            $student_email = $edit_sql['student_email'];
                             ?>
 
             <form id="myform" class="form-horizontal" method="POST" role="form"
@@ -129,6 +130,13 @@ if ($login_level == '1')
                 <div class="col-lg-8">
                   <input type="text" id="text1" placeholder="Last Name" class="form-control" name="student_lastname"
                     onkeyup="letterInputOnly(this);" required="" value="<?php echo $student_lName;?>">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="emailaddress" class="control-label col-lg-4">Email Address</label>
+
+                <div class="col-lg-8">
+                  <input type="email" id="emailaddress" placeholder="Email Address" class="form-control" name="student_email" required value="<?php echo $student_email;?>">
                 </div>
               </div>
               <div class="form-group">

@@ -47,7 +47,7 @@ $userType = "admin";
       </li>
 
       <?php 
-                                  if ($page == 'tracerlist')
+                                  if ($page == 'Tracer List')
                                   {
                                     ?>
       <li class="active">
@@ -62,6 +62,24 @@ $userType = "admin";
                                    ?>
         <a href="tracerlist.php">
           <i class="fa fa-mortar-board"></i> <span>Tracer List</span>
+        </a>
+      </li>
+      <?php 
+                                  if ($page == 'Report Generation')
+                                  {
+                                    ?>
+      <li class="active">
+        <?php
+                                  }
+                                  else
+                                  {
+                                    ?>
+      <li>
+        <?php
+                                  }
+                                   ?>
+        <a href="reportgeneration.php">
+          <i class="fa fa-pie-chart"></i> <span>Report Generation</span>
         </a>
       </li>
       <?php 
