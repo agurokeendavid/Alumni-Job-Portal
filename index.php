@@ -158,22 +158,22 @@ if(isset($_SESSION['login_user']))
     <!-- /.login-box-body -->
   </div>
   <!-- /.login-box -->
-  <nav class="navbar navbar-default navbar-fixed-bottom">
+  <nav class="navbar navbar-primary navbar-fixed-bottom" style="background-color: #3C8DBC;">
     <div class="container">
       <div class="navbar-header">
         <img src="assets/img/capsu-logo-nobg.png" alt="Capsu Alumni Job Portal"
           style="width: 40px; height:40px; margin-top: 6px; margin-right: 6px;">
-        <a class="navbar-brand" href="#">Capsu Alumni Portal</a>
+        <a class="navbar-brand" href="#" style="color: #000;">Capsu Alumni Portal</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="nav navbar-nav list-inline">
-          <li class="active"><a href="#">Login</a></li>
-          <li><a href="#" data-toggle="modal" data-target="#objective">Department Objective</a></li>
-          <li><a href="#" data-toggle="modal" data-target="#goal">Mission, Vision & Goals</a></li>
-          <li><a href="#" data-toggle="modal" data-target="#Overview">Overview</a></li>
-          <li><a href="#" data-toggle="modal" data-target="#SystemDeveloper">System Developer</a></li>
+          <li class="active"><a href="#" style="color: #000;">Login</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#objective" style="color: #000;">Department Objective</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#goal" style="color: #000;">Mission, Vision & Goals</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#Overview" style="color: #000;">Overview</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#SystemDeveloper" style="color: #000;">System Developer</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->

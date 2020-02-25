@@ -116,7 +116,7 @@ $totalJob = $json->DataCount($totalresult_ofJob);
           <div class="inner">
             <h3><?php echo $totalAcc_register_asTeacher; ?></h3>
 
-            <p>Registered Faculty</p>
+            <p>Registered Coordinator</p>
           </div>
           <div class="icon">
             <i class="ion ion-person-add"></i>
@@ -132,12 +132,27 @@ $totalJob = $json->DataCount($totalresult_ofJob);
           <div class="inner">
             <h3><?php echo $totalAcc_register_asStudent;?></h3>
 
-            <p>Registered Students</p>
+            <p>Registered Alumni</p>
           </div>
           <div class="icon">
             <i class="ion ion-person-add"></i>
           </div>
-          <a href="<?php if($login_level == 3) { echo 'recordstudent.php'; } else { echo '#';}?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="<?php 
+          if($login_level == 3) 
+          { 
+            echo 'recordstudent.php'; 
+            }
+            else if ($login_level == 2)
+            {
+              echo 'recordstudent.php';
+            } 
+            else if ($login_level == 1) 
+            { 
+              echo 'batchmates.php'; 
+            } else { 
+              echo '#'; 
+            }
+            ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <!-- ./col -->
@@ -178,8 +193,74 @@ $totalJob = $json->DataCount($totalresult_ofJob);
     <!-- /.row -->
           <!-- Main row -->
           <div class="row">
-        <!-- Left col -->
+
+         <!-- right col (We are only adding the ID to make the widgets sortable)-->
+         <?php if ($login_level == 1 || $login_level == 2 || $login_level == 3) { ?>
         <div class="col-lg-6">
+        <!-- JOBS LIST -->
+        <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Notes</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+            <b>Terms of use: </b><p style="font-size: 16px;">&nbsp; This site aims to provide a convenient, private and informative website experience for our alumni to view their information &amp; announcements, accessible 24/7. Our system offers an easy and convenient user experience website. Rest assured that the data you inputted to this website will be considered confidential and will only be used by Capsu Pontevedra as for your record.</p>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+          <?php if ($login_level == 1 || $login_level == 3) {?>
+        <!-- JOBS LIST -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Recently Added Jobs</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <ul class="products-list product-list-in-box">
+              <?php 
+                $jobs = mysqli_query($con,"SELECT sj.job_ID, sj.job_Title, sj.job_company, sj.job_description, sj.job_location, sj.job_posted_date FROM `suggested_job` sj WHERE sj.job_status = 'Active' ORDER by sj.job_posted_date DESC LIMIT 4"); 
+ while ($job = mysqli_fetch_array($jobs)) {
+?>
+                <li class="item">
+                  <div class="product-info">
+                    <a href="javascript:void(0)" class="product-title" data-toggle="modal" data-target="#view" data-id="<?php echo $job['job_ID'];?>" id="viewjob"><?php echo $job['job_Title']; ?>
+                        <span class="product-description">
+                        <?php echo $job['job_company']; ?>
+                        </span>
+                  </div>
+                </li>
+ <?php } ?>
+              </ul>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer text-center">
+              <a href="<?php if ($login_level == 1) 
+              { 
+                echo 'suggestedjob_available.php'; 
+              } 
+              else if ($login_level == 3) 
+              { echo 'suggestedjob.php'; }?>" class="uppercase">View All Jobs</a>
+            </div>
+            <!-- /.box-footer -->
+          </div>
+          <!-- /.box -->
+ <?php } ?>
+          </div>
+          <!-- right col -->
+ <?php  } ?>
+ <!-- Left col -->
+<div class="col-lg-6">
           <!-- quick email widget -->
           <div class="box box-info">
             <div class="box-header">
@@ -212,110 +293,6 @@ $totalJob = $json->DataCount($totalresult_ofJob);
 
         </div>
         <!-- /.Left col -->
-        <!-- right col (We are only adding the ID to make the widgets sortable)-->
-        <?php if ($login_level == 3) { ?>
-        <div class="col-lg-6">
-
-        <!-- JOBS LIST -->
-        <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Recently Added Jobs</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <ul class="products-list product-list-in-box">
-              <?php 
-                $jobs = mysqli_query($con,"SELECT sj.job_ID, sj.job_Title, sj.job_company, sj.job_description, sj.job_location, sj.job_posted_date FROM `suggested_job` sj WHERE sj.job_status = 'Active' ORDER by sj.job_posted_date DESC LIMIT 4"); 
- while ($job = mysqli_fetch_array($jobs)) {
-?>
-                <li class="item">
-                  <div class="product-info">
-                    <a href="javascript:void(0)" class="product-title" data-toggle="modal" data-target="#view" data-id="<?php echo $job['job_ID'];?>" id="viewjob"><?php echo $job['job_Title']; ?>
-                        <span class="product-description">
-                        <?php echo $job['job_company']; ?>
-                        </span>
-                  </div>
-                </li>
- <?php } ?>
-              </ul>
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer text-center">
-              <a href="suggestedjob.php" class="uppercase">View All Jobs</a>
-            </div>
-            <!-- /.box-footer -->
-          </div>
-          <!-- /.box -->
-          </div>
-          <!-- right col -->
- <?php  } ?>
-
-         <!-- right col (We are only adding the ID to make the widgets sortable)-->
-         <?php if ($login_level == 1) { ?>
-        <div class="col-lg-6">
-        <!-- JOBS LIST -->
-        <div class="box box-danger">
-            <div class="box-header with-border">
-              <h3 class="box-title">Notes</h3>
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-            <b>Note: </b><p style="font-size: 16px;">&nbsp; Rest assured that the data you inputted to this website will be considered confidential and will only be used by Capsu Pontevedra as for your record.</p>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
-        <!-- JOBS LIST -->
-        <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Recently Added Jobs</h3>
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <ul class="products-list product-list-in-box">
-              <?php 
-                $jobs = mysqli_query($con,"SELECT sj.job_ID, sj.job_Title, sj.job_company, sj.job_description, sj.job_location, sj.job_posted_date FROM `suggested_job` sj WHERE sj.job_status = 'Active' ORDER by sj.job_posted_date DESC LIMIT 4"); 
- while ($job = mysqli_fetch_array($jobs)) {
-?>
-                <li class="item">
-                  <div class="product-info">
-                    <a href="javascript:void(0)" class="product-title" data-toggle="modal" data-target="#view" data-id="<?php echo $job['job_ID'];?>" id="viewjob"><?php echo $job['job_Title']; ?>
-                        <span class="product-description">
-                        <?php echo $job['job_company']; ?>
-                        </span>
-                  </div>
-                </li>
- <?php } ?>
-              </ul>
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer text-center">
-              <a href="suggestedjob_available.php" class="uppercase">View All Jobs</a>
-            </div>
-            <!-- /.box-footer -->
-          </div>
-          <!-- /.box -->
-          </div>
-          <!-- right col -->
- <?php  } ?>
- 
           </div>
           <!-- /.row (main row) -->
         </section>

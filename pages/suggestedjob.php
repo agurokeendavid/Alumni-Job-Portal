@@ -47,7 +47,7 @@ include('inc/sidebar-admin.php');
       <div class="col-xs-12">
         <div class="box box-success">
           <div class="box-header with-border">
-            <h3 class="box-title">Suggested Job</h3>
+            <h3 class="box-title">Suggested Jobs</h3>
             <!-- tools box -->
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -59,7 +59,7 @@ include('inc/sidebar-admin.php');
           <!-- /.box-header -->
           <div class="box-body">
             <center>
-              <h1>Suggested Job</h1>
+              <h1>Suggested Jobs</h1>
             </center>
             <hr>
               <button class="btn btn-primary" class="btn btn-info btn-lg" data-toggle="modal" data-target="#add">Add Job</button>

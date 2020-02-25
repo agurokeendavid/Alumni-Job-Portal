@@ -124,7 +124,7 @@ else
                                   }
                                    ?>
         <a href="recordstudent.php">
-          <i class="fa fa-plus-square"></i> <span>Record Student</span>
+          <i class="fa fa-plus-square"></i> <span>Record Alumna</span>
         </a>
       </li>
     </ul>

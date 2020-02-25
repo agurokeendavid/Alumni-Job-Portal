@@ -32,11 +32,11 @@ include('inc/sidebar-admin.php');
   <section class="content-header">
     <h1>
       Dashboard
-      <small>Record Teacher</small>
+      <small>Record Alumni Coordinator</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li class="active">Record Teacher</li>
+      <li class="active">Record Alumni Coordinator</li>
     </ol>
   </section>
 
@@ -46,7 +46,7 @@ include('inc/sidebar-admin.php');
       <div class="col-sm-5">
         <div class="box box-success">
           <div class="box-header with-border">
-            <h3 class="box-title">Add Teacher Record</h3>
+            <h3 class="box-title">Add Alumni Coordinator Record</h3>
             <!-- tools box -->
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -201,7 +201,7 @@ include('inc/sidebar-admin.php');
       <div class="col-sm-7">
         <div class="box box-success">
           <div class="box-header with-border">
-            <h3 class="box-title">Teacher List</h3>
+            <h3 class="box-title">Alumni Coordinator List</h3>
             <!-- tools box -->
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>

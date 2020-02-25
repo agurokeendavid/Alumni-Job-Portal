@@ -43,11 +43,11 @@ if ($login_level == '1')
   <section class="content-header">
     <h1>
       Dashboard
-      <small>Record Student</small>
+      <small>Record Alumna</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li class="active">Record Student</li>
+      <li class="active">Record Alumna</li>
     </ol>
   </section>
 
@@ -57,7 +57,7 @@ if ($login_level == '1')
       <div class="col-xs-12">
         <div class="box box-success">
           <div class="box-header with-border">
-            <h3 class="box-title">Student List</h3>
+            <h3 class="box-title">Alumni List</h3>
             <!-- tools box -->
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>

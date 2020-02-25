@@ -45,6 +45,25 @@ $userType = "admin";
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
         </a>
       </li>
+
+      <?php 
+                                  if ($page == 'tracerlist')
+                                  {
+                                    ?>
+      <li class="active">
+        <?php
+                                  }
+                                  else
+                                  {
+                                    ?>
+      <li>
+        <?php
+                                  }
+                                   ?>
+        <a href="tracerlist.php">
+          <i class="fa fa-mortar-board"></i> <span>Tracer List</span>
+        </a>
+      </li>
       <?php 
                                   if ($page == 'General Forum' || $page == 'Your Posts')
                                   {
@@ -114,7 +133,7 @@ else
                                   }
                                    ?>
         <a href="recordstudent.php">
-          <i class="fa fa-plus-square"></i> <span>Alumni Record</span>
+          <i class="fa fa-plus-square"></i> <span>Alumna Record</span>
         </a>
       </li>
       <?php 
