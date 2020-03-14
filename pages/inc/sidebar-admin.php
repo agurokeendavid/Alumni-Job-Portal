@@ -27,6 +27,7 @@ $userType = "admin";
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
       <li class="header">MAIN NAVIGATION</li>
+      <!-- Dashboard Menu -->
       <?php 
                                   if ($page == 'dashboard')
                                   {
@@ -45,7 +46,7 @@ $userType = "admin";
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
         </a>
       </li>
-
+<!-- Tracer List Menu -->
       <?php 
                                   if ($page == 'Tracer List')
                                   {
@@ -64,6 +65,7 @@ $userType = "admin";
           <i class="fa fa-mortar-board"></i> <span>Tracer List</span>
         </a>
       </li>
+      <!-- Forum Menu -->
       <?php 
                                   if ($page == 'General Forum' || $page == 'Your Posts')
                                   {
@@ -113,6 +115,67 @@ else
         </ul>
 
       </li>
+
+      <!-- Alumni Coordinator Menu -->
+      <?php 
+                                  if ($page == 'Record Teacher')
+                                  {
+                                    ?>
+      <li class="active">
+        <?php
+                                  }
+                                  else
+                                  {
+                                    ?>
+      <li>
+        <?php
+                                  }
+                                   ?>
+        <a href="recordteacher.php">
+          <i class="fa fa-plus-square"></i> <span>Alumni Coordinator</span>
+        </a>
+      </li>
+      <!-- Alumni Record Menu -->
+      <?php 
+                                  if ($page == 'Record Student')
+                                  {
+                                    ?>
+      <li class="active">
+        <?php
+                                  }
+                                  else
+                                  {
+                                    ?>
+      <li>
+        <?php
+                                  }
+                                   ?>
+        <a href="recordstudent.php">
+          <i class="fa fa-plus-square"></i> <span>Alumni Record</span>
+        </a>
+      </li>
+
+<!-- Suggested Job Menu -->
+      <?php 
+                                  if ($page == 'Suggested Job')
+                                  {
+                                    ?>
+      <li class="active">
+        <?php
+                                  }
+                                  else
+                                  {
+                                    ?>
+      <li>
+        <?php
+                                  }
+                                   ?>
+        <a href="suggestedjob.php">
+          <i class="fa fa-filter"></i> <span>Suggested Jobs</span>
+        </a>
+      </li>
+
+      <!-- Report Generation Menu -->
       <?php 
                                   if ($page == 'Report Generation')
                                   {
@@ -132,65 +195,9 @@ else
         </a>
       </li>
       
-      <!-- <li>
-        <a href="pages/widgets.html">
-          <i class="fa fa-pie-chart"></i> <span>Statistic</span>
-        </a>
-      </li> -->
-      <?php 
-                                  if ($page == 'Record Student')
-                                  {
-                                    ?>
-      <li class="active">
-        <?php
-                                  }
-                                  else
-                                  {
-                                    ?>
-      <li>
-        <?php
-                                  }
-                                   ?>
-        <a href="recordstudent.php">
-          <i class="fa fa-plus-square"></i> <span>Alumna Record</span>
-        </a>
-      </li>
-      <?php 
-                                  if ($page == 'Record Teacher')
-                                  {
-                                    ?>
-      <li class="active">
-        <?php
-                                  }
-                                  else
-                                  {
-                                    ?>
-      <li>
-        <?php
-                                  }
-                                   ?>
-        <a href="recordteacher.php">
-          <i class="fa fa-plus-square"></i> <span>Alumni Coordinator</span>
-        </a>
-      </li>
-      <?php 
-                                  if ($page == 'Suggested Job')
-                                  {
-                                    ?>
-      <li class="active">
-        <?php
-                                  }
-                                  else
-                                  {
-                                    ?>
-      <li>
-        <?php
-                                  }
-                                   ?>
-        <a href="suggestedjob.php">
-          <i class="fa fa-filter"></i> <span>Suggested Jobs</span>
-        </a>
-      </li>
+      
+     
+      
 <!-- Comment out if course page menu is needed -->
       <!-- <?php 
                                   if ($page == 'Course')
