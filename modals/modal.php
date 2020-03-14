@@ -1,3 +1,28 @@
+<!-- Modal For University Objective-->
+<div id="howto" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3 class="modal-title">How to access this website?</h3>
+      </div>
+      <div class="modal-body">
+
+        <p class="lead" style=" text-indent: 50px;">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus culpa vero dolor voluptatibus obcaecati esse in quod voluptas, voluptate facere at sit dignissimos officiis rerum debitis eveniet impedit pariatur exercitationem. Ratione itaque ab neque possimus atque ut reiciendis tempore deserunt!
+        </p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 
 <!-- Modal For University Objective-->
 <div id="objective" class="modal fade" role="dialog">

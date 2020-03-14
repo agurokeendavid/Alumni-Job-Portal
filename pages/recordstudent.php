@@ -209,7 +209,7 @@ if ($login_level == '1')
                 </div>
               </div>
               <div class="form-group">
-                <label for="department" class="control-label col-lg-4">Department</label>
+                <label for="department" class="control-label col-lg-4">College</label>
 
                 <div class="col-lg-8">
                   <?php 

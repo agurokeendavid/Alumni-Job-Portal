@@ -162,7 +162,7 @@ include('inc/sidebar-admin.php');
                 </div>
               </div>
               <div class="form-group">
-                <label for="text1" class="control-label col-lg-4">Department</label>
+                <label for="text1" class="control-label col-lg-4">College</label>
 
                 <div class="col-lg-8">
                   <?php 
@@ -216,7 +216,7 @@ include('inc/sidebar-admin.php');
               <thead>
                 <tr>
                   <th class="col-sm-2">Name</th>
-                  <th class="col-sm-3">Department</th>
+                  <th class="col-sm-3">College</th>
                   <th class="col-sm-2">Action</th>
                 </tr>
               </thead>

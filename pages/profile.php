@@ -258,7 +258,7 @@ INNER JOIN capsu_course cc ON usd.student_course = cc.course_ID WHERE student_us
                                                   else if ($userType == "teacher")
                                                   {
                                                     ?>
-                          <p><span>Department </span>: <?php
+                          <p><span>College </span>: <?php
                                                      $department_ID  = $res_sidebar[$userType.'_department']; 
                                                      $z = mysqli_query($con,"SELECT cd.department_name FROM `user_teacher_detail` utd
 INNER JOIN capsu_department cd ON utd.teacher_department = cd.department_ID WHERE teacher_userID = $login_id");

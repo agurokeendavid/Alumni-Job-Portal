@@ -170,7 +170,8 @@ if(isset($_SESSION['login_user']))
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="nav navbar-nav list-inline">
           <li class="active"><a href="#" style="color: #000;">Login</a></li>
-          <li><a href="#" data-toggle="modal" data-target="#objective" style="color: #000;">Department Objective</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#howto" style="color: #000;">How to access</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#objective" style="color: #000;">University Objective</a></li>
           <li><a href="#" data-toggle="modal" data-target="#goal" style="color: #000;">Mission, Vision & Goals</a></li>
           <li><a href="#" data-toggle="modal" data-target="#Overview" style="color: #000;">Overview</a></li>
           <li><a href="#" data-toggle="modal" data-target="#SystemDeveloper" style="color: #000;">System Developer</a></li>

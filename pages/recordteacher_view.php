@@ -170,7 +170,7 @@ include('inc/sidebar-admin.php');
                 </div>
               </div>
               <div class="form-group">
-                <label for="text1" class="control-label col-lg-4">Department</label>
+                <label for="text1" class="control-label col-lg-4">College</label>
 
                 <div class="col-lg-8">
                   <?php 
