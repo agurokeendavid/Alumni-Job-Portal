@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 27, 2020 at 02:50 AM
+-- Generation Time: Mar 08, 2020 at 05:46 PM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.1
+-- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -216,6 +216,23 @@ CREATE TABLE `message_thread_participant` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `student_tracer_detail`
+--
+
+CREATE TABLE `student_tracer_detail` (
+  `id` int(11) NOT NULL,
+  `student_ID` varchar(25) NOT NULL,
+  `campus` varchar(20) NOT NULL,
+  `date_hired_current_job` date DEFAULT NULL,
+  `status_employment` varchar(20) DEFAULT NULL,
+  `monthly_income` varchar(20) DEFAULT NULL,
+  `percentage_increase` varchar(10) DEFAULT NULL,
+  `employer` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `suggested_job`
 --
 
@@ -253,8 +270,7 @@ CREATE TABLE `user_account` (
 --
 
 INSERT INTO `user_account` (`user_ID`, `user_level`, `user_name`, `user_password`, `user_created`) VALUES
-(3, 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2019-10-19 06:40:32'),
-(56, 1, '2016211036', 'c4ca4238a0b923820dcc509a6f75849b', '2020-01-19 05:56:29');
+(3, 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2019-10-19 06:40:32');
 
 -- --------------------------------------------------------
 
@@ -323,13 +339,6 @@ CREATE TABLE `user_notification` (
   `notif_state` int(11) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `user_notification`
---
-
-INSERT INTO `user_notification` (`notif_ID`, `notif_typeID`, `notif_topicID`, `notif_userID`, `notif_receiverID`, `notif_date`, `notif_state`) VALUES
-(7, 3, 28, 56, 3, '2020-01-19 07:07:38', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -362,7 +371,7 @@ CREATE TABLE `user_student_detail` (
   `student_ID` int(11) NOT NULL,
   `student_userID` int(11) UNSIGNED DEFAULT NULL,
   `student_img` varchar(250) DEFAULT 'temp.gif',
-  `student_IDNumber` int(11) UNSIGNED DEFAULT NULL,
+  `student_IDNumber` varchar(25) DEFAULT NULL,
   `student_fName` varchar(100) DEFAULT NULL,
   `student_mName` varchar(25) DEFAULT NULL,
   `student_lName` varchar(50) DEFAULT NULL,
@@ -377,7 +386,8 @@ CREATE TABLE `user_student_detail` (
   `student_course` int(11) UNSIGNED DEFAULT NULL,
   `student_status` varchar(10) DEFAULT 'unregister',
   `student_secretquestion` varchar(250) DEFAULT NULL,
-  `student_secretanswer` varchar(100) DEFAULT NULL
+  `student_secretanswer` varchar(100) DEFAULT NULL,
+  `student_email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -506,6 +516,13 @@ ALTER TABLE `message_thread_participant`
   ADD PRIMARY KEY (`participant_ID`),
   ADD KEY `participant_threadID` (`participant_threadID`),
   ADD KEY `participant_userID` (`participant_userID`);
+
+--
+-- Indexes for table `student_tracer_detail`
+--
+ALTER TABLE `student_tracer_detail`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `student_id_fk` (`student_ID`);
 
 --
 -- Indexes for table `suggested_job`
@@ -661,16 +678,22 @@ ALTER TABLE `message_thread_participant`
   MODIFY `participant_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `student_tracer_detail`
+--
+ALTER TABLE `student_tracer_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `suggested_job`
 --
 ALTER TABLE `suggested_job`
-  MODIFY `job_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `job_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `user_account`
 --
 ALTER TABLE `user_account`
-  MODIFY `user_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `user_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `user_admin_detail`
@@ -706,13 +729,13 @@ ALTER TABLE `user_notif_type`
 -- AUTO_INCREMENT for table `user_student_detail`
 --
 ALTER TABLE `user_student_detail`
-  MODIFY `student_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `student_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `user_teacher_detail`
 --
 ALTER TABLE `user_teacher_detail`
-  MODIFY `teacher_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
+  MODIFY `teacher_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
 
 --
 -- AUTO_INCREMENT for table `view_counter`

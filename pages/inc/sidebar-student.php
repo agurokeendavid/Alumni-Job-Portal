@@ -126,6 +126,25 @@ else
           <i class="fa fa-book"></i> <span>Available Jobs</span>
         </a>
       </li>
+
+      <?php 
+                                  if ($page == 'Send Feedback')
+                                  {
+                                    ?>
+      <li class="active">
+        <?php
+                                  }
+                                  else
+                                  {
+                                    ?>
+      <li>
+        <?php
+                                  }
+                                   ?>
+        <a href="quick_feedback.php">
+          <i class="fa fa-book"></i> <span>Send Feedback</span>
+        </a>
+      </li>
     </ul>
   </section>
   <!-- /.sidebar -->

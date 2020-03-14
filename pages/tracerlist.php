@@ -96,7 +96,7 @@ include('inc/sidebar-admin.php');
                   <?php 
 
 
-$sql = mysqli_query($con,"SELECT usd.student_IDNumber, tracer.campus, cc.course_acronym, CONCAT(usd.student_lName, ', ', usd.student_fName, ' ', UPPER(SUBSTRING(usd.student_mName, 1, 1)), '.') AS fullname, usd.student_year_grad, tracer.date_hired_current_job, tracer.status_employment, CONCAT('Php ', tracer.monthly_income,' .00') AS monthly_income, CONCAT(tracer.percentage_increase, '%') AS percentage_increase, tracer.employer FROM user_student_detail usd INNER JOIN capsu_course cc ON usd.student_course = cc.course_ID INNER JOIN student_tracer_detail tracer ON usd.student_IDNumber = tracer.student_ID;");
+$sql = mysqli_query($con,"SELECT usd.student_IDNumber, tracer.campus, cc.course_acronym, CONCAT(usd.student_lName, ', ', usd.student_fName, ' ', UPPER(SUBSTRING(usd.student_mName, 1, 1)), '.') AS fullname, DATE_FORMAT(usd.student_year_grad, '%M %d %Y') AS student_year_grad, DATE_FORMAT(tracer.date_hired_current_job, '%M %d %Y') AS date_hired_current_job, tracer.status_employment, CONCAT('Php ', tracer.monthly_income,' .00') AS monthly_income, CONCAT(tracer.percentage_increase, '%') AS percentage_increase, tracer.employer FROM user_student_detail usd INNER JOIN capsu_course cc ON usd.student_course = cc.course_ID INNER JOIN student_tracer_detail tracer ON usd.student_IDNumber = tracer.student_ID;");
 while ($d = mysqli_fetch_array($sql)) {
     ?>
                   <tr>
@@ -104,8 +104,8 @@ while ($d = mysqli_fetch_array($sql)) {
                     <td><?php echo $d["campus"]; ?></td>
                     <td><?php echo $d["course_acronym"]; ?></td>
                     <td><?php echo $d["fullname"]; ?></td>
-                    <td><?php echo date("F d, Y", strtotime($d["student_year_grad"])); ?></td>
-                    <td><?php echo date("F d, Y", strtotime($d["date_hired_current_job"])); ?></td>
+                    <td><?php echo $d["student_year_grad"]; ?></td>
+                    <td><?php echo $d["date_hired_current_job"]; ?></td>
                     <td><?php echo $d["status_employment"]; ?></td>
                     <td><?php echo $d["monthly_income"]; ?></td>
                     <td><?php echo $d["percentage_increase"]; ?></td>

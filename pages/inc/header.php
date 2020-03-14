@@ -70,7 +70,7 @@ $userType = "admin";
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>AJ</b>P</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Alumni Job</b> Portal</span>
+        <span class="logo-lg"><b>Alumni</b> Portal</span>
       </a>
       <!-- Header Navbar: style can be found in header.less -->
       <nav class="navbar navbar-static-top">

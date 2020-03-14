@@ -65,24 +65,6 @@ $userType = "admin";
         </a>
       </li>
       <?php 
-                                  if ($page == 'Report Generation')
-                                  {
-                                    ?>
-      <li class="active">
-        <?php
-                                  }
-                                  else
-                                  {
-                                    ?>
-      <li>
-        <?php
-                                  }
-                                   ?>
-        <a href="reportgeneration.php">
-          <i class="fa fa-pie-chart"></i> <span>Report Generation</span>
-        </a>
-      </li>
-      <?php 
                                   if ($page == 'General Forum' || $page == 'Your Posts')
                                   {
                                     ?>
@@ -131,6 +113,25 @@ else
         </ul>
 
       </li>
+      <?php 
+                                  if ($page == 'Report Generation')
+                                  {
+                                    ?>
+      <li class="active">
+        <?php
+                                  }
+                                  else
+                                  {
+                                    ?>
+      <li>
+        <?php
+                                  }
+                                   ?>
+        <a href="reportgeneration.php">
+          <i class="fa fa-pie-chart"></i> <span>Report Generation</span>
+        </a>
+      </li>
+      
       <!-- <li>
         <a href="pages/widgets.html">
           <i class="fa fa-pie-chart"></i> <span>Statistic</span>
@@ -190,7 +191,8 @@ else
           <i class="fa fa-filter"></i> <span>Suggested Jobs</span>
         </a>
       </li>
-      <?php 
+<!-- Comment out if course page menu is needed -->
+      <!-- <?php 
                                   if ($page == 'Course')
                                   {
                                     ?>
@@ -207,7 +209,9 @@ else
         <a href="course.php">
           <i class="fa fa-book"></i> <span>Course</span>
         </a>
-      </li>
+      </li> -->
+<!-- end course page menu -->
+
     </ul>
   </section>
   <!-- /.sidebar -->

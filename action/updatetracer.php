@@ -15,7 +15,7 @@ if (isset($_POST['update_tracer'])) {
 	$update_idnumber = $_POST['idnumber'];
 	$update_datehired = $_POST['datehired'];
     $update_statusemployment = $_POST['statusemployment'];
-    $update_monthly_income = $_POST['monthlyincome'];
+    $update_monthly_income = str_replace(".", "", $_POST['monthlyincome']);
 	$update_percentage_increase = $_POST['percentageincrease'];
 	$update_employer = $_POST['employer'];
 	$sql = "UPDATE student_tracer_detail SET date_hired_current_job = '$update_datehired', status_employment = '$update_statusemployment', monthly_income = '$update_monthly_income', percentage_increase = '$update_percentage_increase', employer = '$update_employer' WHERE student_ID = '$update_idnumber';";

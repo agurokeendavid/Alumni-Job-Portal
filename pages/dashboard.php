@@ -193,14 +193,15 @@ $totalJob = $json->DataCount($totalresult_ofJob);
     <!-- /.row -->
           <!-- Main row -->
           <div class="row">
-
+          <?php if ($login_level == 1 || $login_level == 3) {?>
          <!-- right col (We are only adding the ID to make the widgets sortable)-->
-         <?php if ($login_level == 1 || $login_level == 2 || $login_level == 3) { ?>
         <div class="col-lg-6">
         <!-- JOBS LIST -->
-        <div class="box box-danger">
+         
+        <!-- JOBS LIST -->
+        <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">Notes</h3>
+              <h3 class="box-title">Job Agencies</h3>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -209,12 +210,48 @@ $totalJob = $json->DataCount($totalresult_ofJob);
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-            <b>Terms of use: </b><p style="font-size: 16px;">&nbsp; This site aims to provide a convenient, private and informative website experience for our alumni to view their information &amp; announcements, accessible 24/7. Our system offers an easy and convenient user experience website. Rest assured that the data you inputted to this website will be considered confidential and will only be used by Capsu Pontevedra as for your record.</p>
+              <ul class="products-list product-list-in-box">
+
+       <li class="item">
+       <div class="product-img">
+       <img src="../assets/img/js-logo.jpg" alt="Product Image" class="img-size-50">
+       </div>
+                  <div class="product-info">
+                    <a href="https://www.jobstreet.com.ph/" class="product-title" data-toggle="modal" target="_blank"> Jobstreet PH
+                        <span class="product-description">
+                        Please click the link to visit the page.
+                        </span>
+                        </a>
+                  </div>
+                </li>
+
+                <li class="item">
+       <div class="product-img">
+       <img src="../assets/img/peso-logo.jpg" alt="Product Image" class="img-size-50">
+       </div>
+                  <div class="product-info">
+                    <a href="http://www.ble.dole.gov.ph/index.php/porgrams-projects/2013-12-16-01-22-48" class="product-title" data-toggle="modal" target="_blank"> Public Employment Service Office
+                        <span class="product-description">
+                        Please click the link to visit the page.
+                        </span>
+                        </a>
+                  </div>
+                </li>
+
+              </ul>
             </div>
             <!-- /.box-body -->
+            
           </div>
           <!-- /.box -->
-          <?php if ($login_level == 1 || $login_level == 3) {?>
+
+
+          </div>
+          <!-- right col -->
+
+          <div class="col-lg-6">
+        <!-- JOBS LIST -->
+         
         <!-- JOBS LIST -->
         <div class="box box-primary">
             <div class="box-header with-border">
@@ -255,46 +292,48 @@ $totalJob = $json->DataCount($totalresult_ofJob);
             <!-- /.box-footer -->
           </div>
           <!-- /.box -->
- <?php } ?>
+
+
           </div>
           <!-- right col -->
- <?php  } ?>
- <!-- Left col -->
-<div class="col-lg-6">
-          <!-- quick email widget -->
-          <div class="box box-info">
-            <div class="box-header">
-              <i class="fa fa-envelope"></i>
-
-              <h3 class="box-title">Quick Feedback</h3>
-              <!-- tools box -->
+                    
+ <?php } ?>
+          </div>
+          <!-- /.row (main row) -->
+          <?php 
+          if ($login_level == 1)
+          {
+            $pullright = "pull-right";
+          }
+          else if ($login_level == 2)
+          {
+            $pullright = "";
+          }
+          else if ($login_level == 3)
+          {
+            $pullright = "pull-right";
+          }
+          ?>
+          <div class="row">
+          <div class="col-md-6 <?php echo $pullright; ?>">
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Notes</h3>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
               </div>
-              <!-- /. tools -->
             </div>
-            <form action="../action/submitfeedback.php" method="post">
+            <!-- /.box-header -->
             <div class="box-body">
-                <div class="form-group">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject">
-                </div>
-                <div>
-                  <textarea name="message" class="textarea" placeholder="Message" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                </div>
+            <b>Terms of use: </b><p style="font-size: 16px;">&nbsp; This site aims to provide a convenient, private and informative website experience for our alumni to view their information &amp; announcements, accessible 24/7. Our system offers an easy and convenient user experience website. Rest assured that the data you inputted to this website will be considered confidential and will only be used by Capsu Pontevedra as for your record.</p>
             </div>
-            <div class="box-footer clearfix">
-              <button type="submit" name="submitfeedback" class="pull-right btn btn-default" id="sendEmail">Send
-                <i class="fa fa-arrow-circle-right"></i></button>
-            </div>
-              </form>
+            <!-- /.box-body -->
           </div>
-
-        </div>
-        <!-- /.Left col -->
+          <!-- /.box -->
           </div>
-          <!-- /.row (main row) -->
+          </div>
         </section>
   <!-- /.content -->
 </div>

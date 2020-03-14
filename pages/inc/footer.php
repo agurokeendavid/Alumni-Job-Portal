@@ -37,8 +37,8 @@ $.widget.bridge('uibutton', $.ui.button);
 <script src="../assets/admin/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="../assets/admin/plugins/datatables/dataTables.bootstrap.min.js"></script>
 <!-- Morris.js charts -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="../assets/admin/plugins/morris/morris.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="../assets/admin/plugins/morris/morris.min.js"></script>
 <!-- Sparkline -->
 <script src="../assets/admin/plugins/sparkline/jquery.sparkline.min.js"></script>
 <!-- jvectormap -->
