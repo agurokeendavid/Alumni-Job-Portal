@@ -219,6 +219,8 @@ $(document).ready(function() {
               <div class="col-sm-10">
                 <select class="form-control" name="fieldwork">
                   <option value="Local">Local</option>
+                  <option value="Regional">Regional</option>
+                  <option value="National">National</option>
                   <option value="International">International</option>
                 </select>
               </div>

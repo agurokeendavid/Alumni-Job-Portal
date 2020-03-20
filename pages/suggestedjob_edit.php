@@ -55,12 +55,28 @@ $d = mysqli_fetch_array($sql);
                 <select class="form-control" name="fieldwork">
                 <?php if ($d['job_field_work'] == "Local") {?>
                   <option value="Local" selected>Local</option>
+                  <option value="Regional">Regional</option>
+                  <option value="National">National</option>
+                  <option value="International">International</option>
+                  <?php } else if ($d['job_field_work'] == "Regional") { ?>
+                  <option value="Local">Local</option>
+                  <option value="Regional" selected>Regional</option>
+                  <option value="National">National</option>
+                  <option value="International" selected>International</option>
+                  <?php } else if ($d['job_field_work'] == "National") { ?>
+                  <option value="Local">Local</option>
+                  <option value="Regional">Regional</option>
+                  <option value="National" selected>National</option>
                   <option value="International">International</option>
                 <?php } else if ($d['job_field_work'] == "International") { ?>
                   <option value="Local">Local</option>
+                  <option value="Regional">Regional</option>
+                  <option value="National">National</option>
                   <option value="International" selected>International</option>
                 <?php } else { ?>
                   <option value="Local">Local</option>
+                  <option value="Regional">Regional</option>
+                  <option value="National">National</option>
                   <option value="International">International</option>
                 <?php } ?>
                 </select>

@@ -43,11 +43,11 @@ if ($login_level == '1')
   <section class="content-header">
     <h1>
       Dashboard
-      <small>Record Alumna</small>
+      <small>Record Alumni</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li class="active">Record Alumna</li>
+      <li class="active">Record Alumni</li>
     </ol>
   </section>
 
