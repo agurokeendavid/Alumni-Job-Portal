@@ -199,7 +199,7 @@ else
      
       
 <!-- Comment out if course page menu is needed -->
-      <!-- <?php 
+      <?php 
                                   if ($page == 'Course')
                                   {
                                     ?>
@@ -216,7 +216,7 @@ else
         <a href="course.php">
           <i class="fa fa-book"></i> <span>Course</span>
         </a>
-      </li> -->
+      </li>
 <!-- end course page menu -->
 
     </ul>
